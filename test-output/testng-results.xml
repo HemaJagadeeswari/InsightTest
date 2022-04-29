@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="14" passed="14" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-04-27T15:15:36 IST" name="InSightTestApplicatonTestSuite" finished-at="2022-04-27T15:21:31 IST" duration-ms="355177">
+    <groups>
+    </groups>
+    <test started-at="2022-04-27T15:15:36 IST" name="InSightTest Test Cases" finished-at="2022-04-27T15:17:27 IST" duration-ms="111430">
+      <class name="testcases.LoginPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:15:36 IST" name="setup" finished-at="2022-04-27T15:16:17 IST" duration-ms="40633" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="LoginPageTitleTest()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:17 IST" name="LoginPageTitleTest" description="Login Page: Page Title Test" finished-at="2022-04-27T15:16:17 IST" duration-ms="288" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPageTitleTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:17 IST" name="tearDown" finished-at="2022-04-27T15:16:19 IST" duration-ms="1879" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:19 IST" name="setup" finished-at="2022-04-27T15:16:32 IST" duration-ms="12688" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="LoginPageImageVerification()[pri:1, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:32 IST" name="LoginPageImageVerification" description="Login Page: Page Image Test" finished-at="2022-04-27T15:16:45 IST" duration-ms="13246" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginPageImageVerification -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:45 IST" name="tearDown" finished-at="2022-04-27T15:16:47 IST" duration-ms="2193" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:47 IST" name="setup" finished-at="2022-04-27T15:16:59 IST" duration-ms="12060" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="ForgotPasswordImageVerification()[pri:2, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:16:59 IST" name="ForgotPasswordImageVerification" description="Login Page: Forgot Password Image Test" finished-at="2022-04-27T15:17:05 IST" duration-ms="6371" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ForgotPasswordImageVerification -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:17:05 IST" name="tearDown" finished-at="2022-04-27T15:17:07 IST" duration-ms="1172" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:17:07 IST" name="setup" finished-at="2022-04-27T15:17:24 IST" duration-ms="17019" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="LoginTest()[pri:3, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:17:24 IST" name="LoginTest" description="Login Page: Login to Application" finished-at="2022-04-27T15:17:26 IST" duration-ms="2487" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.LoginPageTest@243c4f91]" started-at="2022-04-27T15:17:26 IST" name="tearDown" finished-at="2022-04-27T15:17:27 IST" duration-ms="1184" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testcases.LoginPageTest -->
+    </test> <!-- InSightTest Test Cases -->
+    <test started-at="2022-04-27T15:17:28 IST" name="InSightTest Test Cases1" finished-at="2022-04-27T15:21:31 IST" duration-ms="243342">
+      <class name="testcases.HomePageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:17:28 IST" name="setup" finished-at="2022-04-27T15:17:39 IST" duration-ms="11399" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageImage()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:17:39 IST" name="HomePageImage" description="Home Page:Page Image Test" finished-at="2022-04-27T15:17:49 IST" duration-ms="10125" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageImage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:17:49 IST" name="tearDown" finished-at="2022-04-27T15:17:51 IST" duration-ms="1957" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:17:51 IST" name="setup" finished-at="2022-04-27T15:18:08 IST" duration-ms="16974" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageSection1()[pri:1, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:08 IST" name="HomePageSection1" description="Home Page:Project Portfolio Section Name Test" finished-at="2022-04-27T15:18:14 IST" duration-ms="5737" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageSection1 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:14 IST" name="tearDown" finished-at="2022-04-27T15:18:16 IST" duration-ms="1585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:16 IST" name="setup" finished-at="2022-04-27T15:18:29 IST" duration-ms="13462" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageSection2()[pri:2, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:29 IST" name="HomePageSection2" description="Home Page:Select a Project Section Name Test" finished-at="2022-04-27T15:18:33 IST" duration-ms="4481" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageSection2 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:33 IST" name="tearDown" finished-at="2022-04-27T15:18:35 IST" duration-ms="1434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:35 IST" name="setup" finished-at="2022-04-27T15:18:48 IST" duration-ms="13515" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageTab1()[pri:3, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:48 IST" name="HomePageTab1" description="Home Page:Employees Tab Name Test" finished-at="2022-04-27T15:18:52 IST" duration-ms="3324" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageTab1 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:52 IST" name="tearDown" finished-at="2022-04-27T15:18:54 IST" duration-ms="1856" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:18:54 IST" name="setup" finished-at="2022-04-27T15:19:10 IST" duration-ms="16002" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageTab2()[pri:4, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:10 IST" name="HomePageTab2" description="Home Page:Contractors Tab Name Test" finished-at="2022-04-27T15:19:14 IST" duration-ms="4750" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageTab2 -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:14 IST" name="tearDown" finished-at="2022-04-27T15:19:17 IST" duration-ms="2324" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:29 IST" name="setup" finished-at="2022-04-27T15:19:44 IST" duration-ms="15676" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="HomePageDropdownVerification(java.lang.String)[pri:5, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:44 IST" name="HomePageDropdownVerification" description="Home Page: Dropdown Verification" data-provider="getHomePageData" finished-at="2022-04-27T15:19:49 IST" duration-ms="4666" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Basic Project!Copy Subs 2 Test!Copy Subs Project - Orchid!Mortenson Washington!No Entity Project!No Subs Project!P3 Test Project!Prev. Wage Project - All Features-new!RPAI Test Project 1!RPAI Test Project 2!Spring Copy Project!Wayne County Test Project]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomePageDropdownVerification -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:49 IST" name="tearDown" finished-at="2022-04-27T15:19:50 IST" duration-ms="1360" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:19:50 IST" name="setup" finished-at="2022-04-27T15:20:03 IST" duration-ms="12943" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="ProjectNameinTableView()[pri:6, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:03 IST" name="ProjectNameinTableView" description="Home Page:Search by Contractor image Test" finished-at="2022-04-27T15:20:13 IST" duration-ms="9310" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ProjectNameinTableView -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:13 IST" name="tearDown" finished-at="2022-04-27T15:20:14 IST" duration-ms="1610" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:14 IST" name="setup" finished-at="2022-04-27T15:20:27 IST" duration-ms="12797" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="SearchByContractorSearchTest()[pri:7, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:27 IST" name="SearchByContractorSearchTest" description="Home Page:Search by Contractor Search Test" finished-at="2022-04-27T15:20:41 IST" duration-ms="14442" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SearchByContractorSearchTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:41 IST" name="tearDown" finished-at="2022-04-27T15:20:43 IST" duration-ms="1568" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:43 IST" name="setup" finished-at="2022-04-27T15:20:58 IST" duration-ms="15222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="SingleContractorView()[pri:8, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:20:58 IST" name="SingleContractorView" description="Home Page:Single Contractors image Test" finished-at="2022-04-27T15:21:09 IST" duration-ms="11039" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SingleContractorView -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:21:09 IST" name="tearDown" finished-at="2022-04-27T15:21:11 IST" duration-ms="1624" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:21:11 IST" name="setup" finished-at="2022-04-27T15:21:25 IST" duration-ms="14439" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="projectselection()[pri:9, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:21:25 IST" name="projectselection" description="Home Page:Project Name Selection Test" finished-at="2022-04-27T15:21:29 IST" duration-ms="3945" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- projectselection -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testcases.HomePageTest@1283bb96]" started-at="2022-04-27T15:21:29 IST" name="tearDown" finished-at="2022-04-27T15:21:31 IST" duration-ms="1825" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testcases.HomePageTest -->
+    </test> <!-- InSightTest Test Cases1 -->
+  </suite> <!-- InSightTestApplicatonTestSuite -->
+</testng-results>

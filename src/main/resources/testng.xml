@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="InSightTestApplicatonTestSuite" annotations="JDK">
+<listeners>
+		<listener class-name="ExtentReportListener.ExtentReportListener" />
+	</listeners>
+	 <test name="InSightTest Test Cases">
+    <classes>
+       <class name="testcases.LoginPageTest"/>
+      </classes>
+      </test>
+	 <test name="InSightTest Test Cases1">
+    <classes>
+       <class name="testcases.HomePageTest"/>
+      </classes>
+      </test>
+        
+</suite>
+ 
+ 
+ 
+ 
