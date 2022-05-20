@@ -6,9 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import javax.imageio.ImageIO;
-
+import java.awt.Robot;
+import java.awt.Rectangle;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -90,20 +90,25 @@ public class HomePage extends TestBase{
 		
 	}
 	
-	public void HomePageImageVerification() throws IOException, AWTException
+	public void HomePageImageVerification() throws IOException, AWTException, InterruptedException
 	{
 		WebDriverWait wait4 = new WebDriverWait(Driver, 50);
 		wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Prev. Wage Project -')]")));
-		BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\HomePage1.png"));
+		BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\HomePage1.png"));
 		Screenshot ImageScreenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(ShootingStrategies.scaling(1.75f), 1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\HomePage1.png"));
-		BufferedImage actualImage = ImageScreenshot.getImage();
+		new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\HomePage1.png"));
+		Robot robot = new Robot();
+		Rectangle captureRect = new Rectangle(800,700);
+		Thread.sleep(2000);
+		BufferedImage screenFullImage = robot.createScreenCapture(captureRect);
+		File outputfile = new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\HomePage1.png");
+		ImageIO.write(screenFullImage, "png", outputfile);
+		BufferedImage actualImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\HomePage1.png"));
 		ImageDiffer imgdiffer = new ImageDiffer();
-
-		   ImageDiff imgdiff = imgdiffer.makeDiff(expectedImage, actualImage);
+		ImageDiff imgdiff = imgdiffer.makeDiff(expectedImage, actualImage);
 		if(imgdiff.hasDiff()==true)
 		{
 			System.out.println("Home Page:HomePage1 Images are not same");
@@ -112,7 +117,7 @@ public class HomePage extends TestBase{
 		{
 			System.out.println("Home Page:HomePage1 Images are same");
 		}
-		BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\HomePage2.png"));
+		BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\HomePage2.png"));
 		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Copy Subs')]"));
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
@@ -120,7 +125,7 @@ public class HomePage extends TestBase{
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot1.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\HomePage2.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\HomePage2.png"));
 		BufferedImage actualImage1 = ImageScreenshot1.getImage();
 		ImageDiffer imgdiffer1 = new ImageDiffer();
 
@@ -138,13 +143,13 @@ public class HomePage extends TestBase{
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", l);
 	      //Thread.sleep(800);
-	      BufferedImage expectedImage2 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\HomePage3.png"));
+	      BufferedImage expectedImage2 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\HomePage3.png"));
 		//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		Screenshot ImageScreenshot2= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot2.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\HomePage3.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\HomePage3.png"));
 
 		BufferedImage actualImage2 = ImageScreenshot2.getImage();
 		ImageDiffer imgdiffer2 = new ImageDiffer();
@@ -184,13 +189,13 @@ public class HomePage extends TestBase{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Cross Project Employees')]")));
 	    CrossProjectEmployees.click();
 	      //Thread.sleep(800);
-	    BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\CrossProjectEmployees.png"));
+	    BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\CrossProjectEmployees.png"));
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		Screenshot ImageScreenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\CrossProjectEmployees.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\CrossProjectEmployees.png"));
 
 		BufferedImage actualImage = ImageScreenshot.getImage();
 	    ImageDiffer imgdiffer = new ImageDiffer();
@@ -204,13 +209,13 @@ public class HomePage extends TestBase{
 		{
 			System.out.println("Home Page:CrossProjectEmployees Images are same");
 		}
-	    BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\EmployeeDetails.png"));
+	    BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\EmployeeDetails.png"));
 		EmployeeDetails.click();
 		Screenshot ImageScreenshot1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot1.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\EmployeeDetails.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\EmployeeDetails.png"));
 
 		BufferedImage actualImage1 = ImageScreenshot.getImage();
 		ImageDiffer imgdiffer1 = new ImageDiffer();
@@ -238,13 +243,13 @@ public class HomePage extends TestBase{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Cross Project Contractors')]")));
 	    CrossProjectContractors.click();
 	      //Thread.sleep(800);
-	    BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\CrossProjectEmployees.png"));
+	    BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\CrossProjectEmployees.png"));
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		Screenshot ImageScreenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\CrossProjectContractors.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\CrossProjectContractors.png"));
 
 		BufferedImage actualImage = ImageScreenshot.getImage();
 		ImageDiffer imgdiffer = new ImageDiffer();
@@ -258,13 +263,13 @@ public class HomePage extends TestBase{
 		{
 			System.out.println("Home Page:CrossProjectContractors Images are same");
 		}
-		BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\ContractorDetails.png"));
+		BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\ContractorDetails.png"));
 		ContractorDetails.click();
 		Screenshot ImageScreenshot1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(ImageScreenshot1.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\ContractorDetails.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\ContractorDetails.png"));
 
 		BufferedImage actualImage1 = ImageScreenshot1.getImage();
 		ImageDiffer imgdiffer1 = new ImageDiffer();
@@ -324,12 +329,12 @@ public class HomePage extends TestBase{
 		WebDriverWait wait2 = new WebDriverWait(Driver, 50);
 		wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'SEARCH BY CONTRACTOR')]")));
 		SearchByContractor.click();
-	    BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchContractor1.png"));
+	    BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchContractor1.png"));
 		Screenshot SearchContractor1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(SearchContractor1.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchContractor1.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchContractor1.png"));
 		BufferedImage actualImage = SearchContractor1.getImage();
 		ImageDiffer imgdiffer = new ImageDiffer();
 
@@ -345,7 +350,7 @@ public class HomePage extends TestBase{
 		
 		
 		
-		BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchContractor2.png"));
+		BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchContractor2.png"));
 		
 		//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		WebElement l=Driver.findElement(By.xpath("//*[contains(text(),'Spoof User')]"));
@@ -355,7 +360,7 @@ public class HomePage extends TestBase{
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(SearchContractor2.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchContractor2.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchContractor2.png"));
 
 		BufferedImage actualImage1 = SearchContractor2.getImage();
 
@@ -381,13 +386,13 @@ public class HomePage extends TestBase{
 		SearchByContractor.click();
 	    Search.sendKeys("123");
 	    Searchbutton.click();
-	    BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchByContractorviewSearch1.png"));
+	    BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchByContractorviewSearch1.png"));
 	    Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 	    ((JavascriptExecutor) Driver).executeScript("window.scrollBy(0,40000)");
 	    Screenshot ImageScreenshotS= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 		
 		ImageIO.write(ImageScreenshotS.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchByContractorviewSearch1.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchByContractorviewSearch1.png"));
 		BufferedImage actualImage1 = ImageScreenshotS.getImage();
 
 		ImageDiffer Diff = new ImageDiffer();
@@ -400,7 +405,7 @@ public class HomePage extends TestBase{
 			{
 				System.out.println("Home Page:SearchByContractorviewSearch1 Images are same");
 			}
-			BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchByContractorviewSearch2.png"));
+			BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchByContractorviewSearch2.png"));
 		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Mortenson')]"));
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
@@ -408,7 +413,7 @@ public class HomePage extends TestBase{
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(SearchContractor2.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchByContractorviewSearch2.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchByContractorviewSearch2.png"));
 
 		BufferedImage actualImage = SearchContractor2.getImage();
 
@@ -423,13 +428,13 @@ public class HomePage extends TestBase{
 				System.out.println("Home Page:SearchByContractorviewSearch2 Images are same");
 			}
 			Arrowbutton.click();
-		   BufferedImage SearchSub = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchByContractorviewSub1.png"));
+		   BufferedImage SearchSub = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchByContractorviewSub1.png"));
 		    Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 		    ((JavascriptExecutor) Driver).executeScript("window.scrollBy(0,40000)");
 		    Screenshot SearchSub1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 			
 			ImageIO.write(SearchSub1.getImage(), "png",
-					new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchByContractorviewSub1.png"));
+					new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchByContractorviewSub1.png"));
 			BufferedImage actualImage2 = SearchSub1.getImage();
 
 			ImageDiffer Diff2 = new ImageDiffer();
@@ -442,7 +447,7 @@ public class HomePage extends TestBase{
 				{
 					System.out.println("Home Page:SearchByContractorviewSub1 Images are same");
 				}
-				BufferedImage SearchSub3 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SearchByContractorViewSub2.png"));
+				BufferedImage SearchSub3 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SearchByContractorViewSub2.png"));
 				WebElement S1=Driver.findElement(By.xpath("//*[contains(text(),'Sample')]"));
 			      // Javascript executor
 			      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S1);
@@ -450,7 +455,7 @@ public class HomePage extends TestBase{
 
 			Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 			ImageIO.write(SearchSub4.getImage(), "png",
-					new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SearchByContractorviewSub2.png"));
+					new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SearchByContractorviewSub2.png"));
 
 		BufferedImage actualImage3= SearchSub4.getImage();
 
@@ -477,12 +482,12 @@ public class HomePage extends TestBase{
 		WebDriverWait wait2 = new WebDriverWait(Driver, 50);
 		wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'SINGLE CONTRACTS')]")));
 		SingleContractors.click();
-	   BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SingleContractor1.png"));
+	   BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SingleContractor1.png"));
 		Screenshot SingleContractor= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 		ImageIO.write(SingleContractor.getImage(), "png",
-				new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SingleContractor1.png"));
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SingleContractor1.png"));
 		BufferedImage actualImage = SingleContractor.getImage();
 		ImageDiffer imgdiffer = new ImageDiffer();
 
@@ -498,12 +503,12 @@ public class HomePage extends TestBase{
 		WebElement B=Driver.findElement(By.xpath("//*[contains(text(),'Basic')]"));
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", B);
-		BufferedImage expectedImage1 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SingleContractor2.png"));
+		BufferedImage expectedImage1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SingleContractor2.png"));
 			Screenshot SingleContractor1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 			Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 			ImageIO.write(SingleContractor1.getImage(), "png",
-					new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SingleContractor2.png"));
+					new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SingleContractor2.png"));
 			BufferedImage actualImage1 = SingleContractor1.getImage();
 			ImageDiffer imgdiffer1 = new ImageDiffer();
 
@@ -517,7 +522,7 @@ public class HomePage extends TestBase{
 				System.out.println("Home Page:SingleContractor2 Images are same");
 			}
 		
-		BufferedImage expectedImage2 = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\SingleContractor3.png"));
+		BufferedImage expectedImage2 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\SingleContractor3.png"));
 		WebElement P=Driver.findElement(By.xpath("//*[contains(text(),'Prev. Wage Project -')]"));
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", P);
@@ -525,7 +530,7 @@ public class HomePage extends TestBase{
 
 			Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 			ImageIO.write(SingleContractor2.getImage(), "png",
-					new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\SingleContractor3.png"));
+					new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\SingleContractor3.png"));
 
 			BufferedImage actualImage2 = SingleContractor2.getImage();
 		ImageDiffer Diff = new ImageDiffer();
@@ -540,20 +545,20 @@ public class HomePage extends TestBase{
 			}
 	}
 	
-/*
+
 	public DashboardPage Projectselection()
 	{
 		WebDriverWait wait4 = new WebDriverWait(Driver, 70);
 		wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Prev. Wage Project -')]//following::button[1]")));
-		Actions A=new Actions(Driver);
+		/*Actions A=new Actions(Driver);
 		A.moveToElement(ProjectSelection).build();
-		A.click(ProjectSelection).perform();
+		A.click(ProjectSelection).perform();*/
 		ProjectSelection.click();
 		return new DashboardPage(); 
 		
 	}
 
-*/
+
 
 
 }

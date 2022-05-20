@@ -65,11 +65,11 @@ public static String ValidateLoginPageTitle()
 
 
 public void LoginPageImageVerification() throws IOException {
-BufferedImage expectedImage = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\LoginPage.png"));
+BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\LoginPage.png"));
 	Screenshot ImageScreenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 	Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 	ImageIO.write(ImageScreenshot.getImage(), "png",
-			new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\LoginPage.png"));
+			new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\LoginPage.png"));
 
 	
 	BufferedImage actualImage = ImageScreenshot.getImage();
@@ -90,11 +90,11 @@ else
 
 public void ForgotPasswordImageVerification() throws IOException {
 	ForgotPassword.click();
-    BufferedImage expectedImageFP = ImageIO.read(new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\Baseline\\ForgotPassword.png."));
+    BufferedImage expectedImageFP = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\ForgotPassword.png."));
 	Screenshot ImageScreenshotFP= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 	Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
 	ImageIO.write(ImageScreenshotFP.getImage(), "png",
-			new File("C:\\Users\\sbala\\eclipse-workspace\\AutomatedTest\\UI Image\\ForgotPassword.png"));
+			new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\ForgotPassword.png"));
 
 	
 	BufferedImage actualImageFP = ImageScreenshotFP.getImage();

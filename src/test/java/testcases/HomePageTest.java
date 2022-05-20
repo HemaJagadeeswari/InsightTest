@@ -11,14 +11,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.TestBase;
-//import pages.DashboardPage;
+import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 import util.TestUtil;
 
 public class HomePageTest extends TestBase{
 	HomePage homepage;
-	//DashboardPage Dashboardpage;
+	DashboardPage Dashboardpage;
 	LoginPage Loginpage;
 	
 public HomePageTest()
@@ -34,7 +34,7 @@ public void setup()
 	}
 	
 	@Test(priority=0,description="Home Page:Page Image Test")
-   public void HomePageImage() throws IOException, AWTException
+   public void HomePageImage() throws IOException, AWTException, InterruptedException
    {
 	homepage.HomePageImageVerification();
    }
@@ -116,13 +116,13 @@ public void setup()
 			homepage.SingleContractorsImageVerification();
 		}
 
-/*		
+		
 	@Test(priority=9,description= "Home Page:Project Name Selection Test" )
 	public void projectselection()
 	{
 		Dashboardpage=homepage.Projectselection();
 	}
-*/	
+
 	@AfterMethod
 	public void tearDown()
 	{

@@ -1,14 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +8,14 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import base.TestBase;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -24,12 +23,13 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import util.TestUtil;
+
 public class DashboardPage extends TestBase
 {
 	@FindBy(xpath="//*[contains(text(),'Change')]//preceding::p[1]")
 	WebElement ProjectName;
 	
-	@FindBy(xpath="//*[contains(text(),'Select Contract')]//following::p[1]")
+	//@FindBy(xpath="//*[contains(text(),'Select Contract')]//following::p[1]")
 	WebElement ProjectNumber;
 	
 	@FindBy(xpath="//*[contains(text(),'Total Project Value')]")
@@ -86,10 +86,10 @@ public class DashboardPage extends TestBase
 		return ProjectName.getText();
 	}
 
-	public String ValidateProjectNumber()
+	/*public String ValidateProjectNumber()
 	{
 		return ProjectNumber.getText();
-	}
+	}*/
 	
 	public void DashboardPageImageVerification() throws IOException {
 		WebDriverWait wait4 = new WebDriverWait(Driver, 40);
@@ -112,11 +112,11 @@ public class DashboardPage extends TestBase
 	   ImageDiff imgdiffD = imgdifferD.makeDiff(expectedImageDP, actualImageDP);
 	if(imgdiffD.hasDiff()==true)
 	{
-		System.out.println("Images are not same");
+		System.out.println("Dashboard Page: DashboardPage1 Images are not same");
 	}
 	else
 	{
-		System.out.println("Images are same");
+		System.out.println("Dashboard Page: DashboardPage1 Images are same");
 	}
 		
 		BufferedImage expectedImageP = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\DashboardPage2.png."));
@@ -137,11 +137,11 @@ public class DashboardPage extends TestBase
 	   ImageDiff imgdiff = imgdiffer.makeDiff(expectedImageP, actualImageP);
 	if(imgdiff.hasDiff()==true)
 	{
-		System.out.println("Images are not same");
+		System.out.println("Dashboard Page: DashboardPage2 Images are not same");
 	}
 	else
 	{
-		System.out.println("Images are same");
+		System.out.println("Dashboard Page: DashboardPage2 Images are same");
 	}
 	}
 
@@ -226,7 +226,7 @@ public class DashboardPage extends TestBase
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Total Project Value')]")));
 		Driver.findElement(By.xpath("//*[@id='mui-component-select-tabValue']")).click();
 		List<WebElement> E= Driver.findElements(By.xpath("//div[@id='menu-tabValue']//li//p"));
-		System.out.println(E.size());
+		System.out.println("Actual Business Entity Name Count:" + E.size());
 		String[] arr = EN.split("!"); 
 		 Boolean strFlag;  
         for(int i=0;i<E.size();i++)
@@ -244,7 +244,7 @@ public class DashboardPage extends TestBase
 		  count=count+1;
 		  if(count==16) 
 			{
-				 System.out.println("Entity Name value: Matches");
+				 System.out.println("ALL Business Entity Name value: Matches");
 			}
 		  break;
 
@@ -252,7 +252,7 @@ public class DashboardPage extends TestBase
      		   }   
          	if(!strFlag) {
         		System.out.println("Entity Name value:"+ E.get(i).getText());
-        		System.out.println("Entity Name value:Not Matches");
+        		System.out.println("Entity Name value: Above Not Matches");
         	}
  		}
 	}
