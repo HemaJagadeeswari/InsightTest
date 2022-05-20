@@ -1,34 +1,24 @@
 package testcases;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-
 import java.awt.AWTException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import base.TestBase;
-import pages.DashboardPage;
+//import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 import util.TestUtil;
 
 public class HomePageTest extends TestBase{
 	HomePage homepage;
-	DashboardPage Dashboardpage;
+	//DashboardPage Dashboardpage;
 	LoginPage Loginpage;
 	
 public HomePageTest()
@@ -77,13 +67,13 @@ public void setup()
 		String T2=homepage.ValidateSecondTab();
 		Assert.assertEquals(T2, "CONTRACTORS","Tab name not matching");
 	}
-	
+	// In development
 	//@Test(priority=6,description="Home Page:Employees Image Test")
 	public void HomePageTab1ImageVerification() throws IOException, AWTException
 	{
 		homepage.Employeesview();
 	}
-	
+	// In development
 	//@Test(priority=7,description="Home Page:Contractors Image Test")
 	public void HomePageTab2ImageVerification() throws IOException, AWTException
 	{
@@ -95,13 +85,13 @@ public void setup()
 	//@Factory
 	public Object[][] getTestDataBaseline(Method m)
 	{
+		System.out.println("Expected Project Name Values:");
 		Object data[][]=TestUtil.getTestDataBaseline(SheetName1,m.getName());
-		System.out.println(m.getName());
+		//System.out.println(m.getName());
 		return data;        	
 	}
 	
 	@Test(priority=5,dataProvider="getHomePageData",description="Home Page: Dropdown Verification")
-	//@Test(priority=1)
 	public void HomePageDropdownVerification(String PN)
 	{
 		homepage.HomePageDDNVerification(PN);
@@ -126,13 +116,13 @@ public void setup()
 			homepage.SingleContractorsImageVerification();
 		}
 
-		
+/*		
 	@Test(priority=9,description= "Home Page:Project Name Selection Test" )
 	public void projectselection()
 	{
 		Dashboardpage=homepage.Projectselection();
 	}
-	
+*/	
 	@AfterMethod
 	public void tearDown()
 	{
