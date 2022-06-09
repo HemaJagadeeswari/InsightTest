@@ -42,7 +42,7 @@ public class DetailsPageTest extends TestBase
 		
 		}
 		
-@Test(priority=0,description="Details Page: Project Name Value Test")
+/*@Test(priority=0,description="Details Page: Project Name Value Test")
 	public void ProjectName()
 	{
 		String ProjectName=Detailspage.ValidateProjectNameField();
@@ -205,10 +205,25 @@ public class DetailsPageTest extends TestBase
 			{
 				String AN=Detailspage.ValidateAddNew();
 				Assert.assertEquals(AN,"ADD NEW","Add New button Name is not matching");
-				}
+				}*/
+	 
+	@DataProvider(name="NewAddress")
+		public Object[][] getTestData1(Method m)
+		{
+		System.out.println("Expected Value");
+			Object data[][]=TestUtil.getTestData(sheetName,m.getName());
+			return data;        	
+		}
+	 
+	 @Test(priority=25,dataProvider="NewAddress",description="Details Page: Adding,Editing and Deleting a New Address")
+		public void NewAddressCreation(String ST1,String ST2,String C,String Co,String STA,String Z,String ED,String AT,String ED1) throws InterruptedException
+		{
+			Detailspage.ValidateNewAddress(ST1, ST2, C, Co, STA, Z, ED, AT, ED1);
+		
+			}
  
 	 
-  //@Test(priority=25 ,description="Details Page: Scheduled Start Date Value Test")
+ /* @Test(priority=25 ,description="Details Page: Scheduled Start Date Value Test")
 	public void ScheduledStartDate()
 	{
         String ScheduledStartDate=Detailspage.ValidateScheduledStartDate();
@@ -267,7 +282,9 @@ public class DetailsPageTest extends TestBase
 	{
 			String Save=Detailspage.ValidateSavebutton();
 			Assert.assertEquals(Save,"SAVE","Button Text not matched");
-		}		
+		}
+	
+	
 	//Configuration Page
 	@Test(priority=34,description="Details Page: Configuration Tab Name Test")
 	public void ConfigurationTab()
@@ -509,7 +526,7 @@ public void SingleDateCancelbutton()
 		
 		Subcontractorpage=Detailspage.ValidateSubcontractorPageLaunch();
 		}
-	
+	*/
 @AfterMethod
 	public void tearDown()
 	{

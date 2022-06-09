@@ -19,8 +19,8 @@ public class TestBase {
 	public static Properties prop;
 	public String browsername;
 	public static EventFiringWebDriver e_driver;
-	public static String sheetName[]= {"AddSubcontractor","ContactList","OwnerEthnicityandGender","PayrollFieldsSelection","T1Setup","T1SetupAddSubcontractor","T1AddEmployee","T1ImportEmployee","T1AddEmployee1","T1WorkClasses","T1ManualPayroll","T1EditPayroll"};
-	public static String SheetName1[]= {"HomePage","DashboardPage","DetailsPage","AddSubcontractor","T1Setup","T1DashboardPage","T1DetailsPage","T1EmployeeManagement"};
+	public static String sheetName[]= {"DetailsPage","AddSubcontractor","ContactList","OwnerEthnicityandGender","PayrollFieldsSelection","T1Setup","T1SetupAddSubcontractor","T1AddEmployee","T1ImportEmployee","T1AddEmployee1","T1WorkClasses","T1ManualPayroll","T1EditPayroll"};
+	public static String SheetName1[]= {"HomePage","DashboardPage","DetailsPage","AddSubcontractor","T1Setup","T1DashboardPage","T1DetailsPage","T1EmployeeManagement","PayrollLockout"};
 	public static String SheetName2[]= {"Employees"};
 	public TestBase()
 	{
@@ -43,7 +43,7 @@ prop.load(Config);
 		browsername=prop.getProperty("Browser");
 		if(browsername.equals("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver","C:\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","F:\\SkillSmart\\SkillSmart Automation\\Workspace\\SW\\chromedriver_win32 (10)\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();

@@ -47,6 +47,9 @@ public class TestUtil extends TestBase{
 				book = WorkbookFactory.create(file);
 				
 				switch(mName) {
+				  case "NewAddressCreation":
+					  strSheetName="DetailsPage";
+					  break;
 				  case "AddNewSubcontractor":
 					  strSheetName="AddSubcontractor";
 					  break;
@@ -157,6 +160,8 @@ public class TestUtil extends TestBase{
 				  case "EmployeeManagementdropdownVerification":
 					  SSheetName="T1EmployeeManagement";
 					break;
+				
+
 					
 					  
 				}

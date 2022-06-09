@@ -113,6 +113,9 @@ public class DetailsPage extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Cancel')])[1]")
 	WebElement AddressCancel;
 	
+	@FindBy(xpath="//*[contains(text(),'Effective')]//following::button[2]")
+	WebElement Add;
+	
 	@FindBy(xpath="//*[contains(text(),'Add New')]")
 	WebElement AddNew;
 	
@@ -277,6 +280,7 @@ public class DetailsPage extends TestBase{
 	{
 		return Ethnicity.getText();
 	}
+	
 	
 	public String ValidateGenderField()
 	{
@@ -480,6 +484,152 @@ public class DetailsPage extends TestBase{
 		return AddressCancelbutton.getText();
 		
 	}
+	
+	public void ValidateNewAddress(String ST1,String ST2,String C,String Co,String STA,String Z,String ED,String AT,String ED1) throws InterruptedException
+	{
+		AddNew.click();
+		Street1.click();
+		Street1.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		Street1.sendKeys(ST1);
+		Street2.click();
+		Street2.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		Street2.sendKeys(ST2);
+		City.click();
+		City.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+	    City.sendKeys(C);
+		
+		Country.click();
+		List<WebElement> country1=Driver.findElements(By.xpath("//div[@id='mui-component-select-country']//following::ul[2]//li"));
+		 System.out.println(country1.size());
+		for(int m=0;m<country1.size();m++)
+		{
+	 if(country1.get(m).getText().equals(Co))
+	 {
+		 country1.get(m).click();
+		 }
+			}
+		   Actions n = new Actions(Driver);
+		    n.sendKeys(Keys.ESCAPE).build().perform();   
+		State.click();
+		 List<WebElement> state=Driver.findElements(By.xpath("//div[@id='mui-component-select-state']//following::ul[2]//li"));
+		 System.out.println(state.size());
+			
+			for(int k=0;k<state.size();k++)
+			{
+		 if(state.get(k).getText().equals(STA))
+		 {
+			 state.get(k).click();
+			 break;
+		 }
+			}
+			   Actions n1 = new Actions(Driver);
+			    n1.sendKeys(Keys.ESCAPE).build().perform();   
+		Zip.click();
+	    Zip.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		Zip.sendKeys(Z);
+		EffectiveDate.click();
+		EffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		EffectiveDate.sendKeys(ED);
+		AddressType.click();
+		List<WebElement> type=Driver.findElements(By.xpath("//div[@id='mui-component-select-type']//following::ul[2]//li"));
+		 System.out.println(type.size());
+			
+			for(int m=0;m<type.size();m++)
+			{
+		 if(type.get(m).getText().equals(AT))
+		 {
+			 type.get(m).click();	
+		}
+			}
+			   Actions n3 = new Actions(Driver);
+			    n3.sendKeys(Keys.ESCAPE).build().perform();   
+		 AddressCancelbutton.click();
+		 AddNew.click();
+			Street1.click();
+			Street1.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			Street1.sendKeys(ST1);
+			Street2.click();
+			Street2.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			Street2.sendKeys(ST2);
+			City.click();
+			City.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		    City.sendKeys(C);
+			
+			Country.click();
+			List<WebElement> country2=Driver.findElements(By.xpath("//div[@id='mui-component-select-country']//following::ul[6]//li"));
+			 System.out.println(country2.size());
+			for(int m1=0;m1<country2.size();m1++)
+			{
+		 if(country2.get(m1).getText().equals(Co))
+		 {
+			 country2.get(m1).click();
+			 }
+				}
+			   Actions n4 = new Actions(Driver);
+			    n4.sendKeys(Keys.ESCAPE).build().perform();   
+			State.click();
+			 List<WebElement> state1=Driver.findElements(By.xpath("//div[@id='mui-component-select-state']//following::ul[2]//li"));
+			 System.out.println(state1.size());
+				
+				for(int k1=0;k1<state1.size();k1++)
+				{
+			 if(state1.get(k1).getText().equals(STA))
+			 {
+				 state1.get(k1).click();
+				 break;
+			 }
+				}
+			Zip.click();
+		    Zip.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			Zip.sendKeys(Z);
+			EffectiveDate.click();
+			EffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			EffectiveDate.sendKeys(ED);
+			AddressType.click();
+			List<WebElement> type1=Driver.findElements(By.xpath("//div[@id='mui-component-select-type']//following::ul[2]//li"));
+			 System.out.println(type1.size());
+					for(int m2=0;m2<type1.size();m2++)
+				{
+			 if(type1.get(m2).getText().equals(AT))
+			 {
+				 type1.get(m2).click();	
+			}
+				}
+					   Actions n5 = new Actions(Driver);
+					    n5.sendKeys(Keys.ESCAPE).build().perform();   
+		Add.click();
+		Thread.sleep(1000);
+		Driver.findElement(By.xpath("//*[contains(text(),'"+ST1+"')]//following::button[1]")).click();
+		EffectiveDate.click();
+		EffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		EffectiveDate.sendKeys(ED1);
+		if(Updatebutton.isEnabled())
+		{
+		Updatebutton.click();
+		System.out.println("Field is edited");
+		}
+		else
+		{
+			System.out.println("Unable to edit");
+			
+		}
+		Driver.findElement(By.xpath("//*[contains(text(),'"+ST1+"')]//following::button[2]")).click();
+		Driver.findElement(By.xpath("//*[contains(text(),'delete')]//following::button[1]")).click();
+		Driver.findElement(By.xpath("//*[contains(text(),'"+ST1+"')]//following::button[2]")).click();
+		Driver.findElement(By.xpath("//*[contains(text(),'delete')]//following::button[2]")).click();
+		if(Driver.findElement(By.xpath("//*[contains(text(),'"+ST1+"')]")).isDisplayed())
+				{
+			System.out.println("Newly created Address is not deleted");
+				}
+		else
+		{
+			System.out.println("Newly created Address was deleted");
+		}
+		}
+			
+		
+	
+	
 	
 	public String ValidateScheduledStartDate()
 	{

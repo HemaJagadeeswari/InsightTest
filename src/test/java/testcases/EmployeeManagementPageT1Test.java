@@ -46,82 +46,126 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
 		EmployeemanagementpageT1=DetailspageT1.EMlaunch();
 		}
-	/*@Test(priority=0, description="Employee Management T1: Employees Tab Name Test")
+	
+/*	@Test(priority=0,description="Employee Management T1: Employee Management Image Test")
+	public void EmployeeManagementImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateEmployeeManagementImageVerification();
+			} 
+	
+	@Test(priority=1, description="Employee Management T1: Employees Tab Name Test")
 	public void ValidateEmployeeManagementTab()
 	{
 		String E=EmployeemanagementpageT1.ValidateEmployeesTab();
 		Assert.assertEquals(E,"EMPLOYEES","Employees Tab Name not matching");
 	}
 	
-	@Test(priority=1, description="Employee Management T1: + Add Employee Tab Name Test")
+	@Test(priority=2, description="Employee Management T1: + Add Employee Tab Name Test")
 	public void ValidateAddEmployeeTab()
 	{
 		String AE=EmployeemanagementpageT1.ValidateAddEmployeeTab();
 		Assert.assertEquals(AE,"+ ADD EMPLOYEE","+ Add Employee Tab Name not matching");
 	}
 	
-	@Test(priority=2, description="Employee Management T1: Import Employees Tab Name Test")
+	@Test(priority=3, description="Employee Management T1: Import Employees Tab Name Test")
 	public void ValidateImportEmployeeTab()
 	{
 		String IE=EmployeemanagementpageT1.ValidateImportEmployeeTab();
 		Assert.assertEquals(IE,"IMPORT EMPLOYEES","Import Employees Tab Name not matching");
-	}
-	/*@DataProvider(name="getDetailsPageDataNew1")
+	}*/
+	
+	@Test(priority=4,description="Employee Management T1: Employee Image Test")
+	public void EmployeeImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateEmployeeViewImageVerification();
+			}
+	
+	@Test(priority=5,description="Employee Management T1: Address History Image Test")
+	public void AddressHistoryImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateAddressHistoryViewImageVerification();
+			} 
+	
+	@Test(priority=6,description="Employee Management T1: Address History Image Test")
+	public void WorkInfoImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateWorkInfoImageVerification();
+			}
+	
+	@Test(priority=7,description="Employee Management T1: Pay Rates Image Test")
+	public void PayRatesImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidatePayRatesImageVerification();
+			}
+	
+	@Test(priority=8,description="Employee Management T1: Union Image Test")
+	public void UnionImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateUnionImageVerification();
+			}
+	
+	@Test(priority=9,description="Employee Management T1: Validations Image Test")
+	public void ValidationsImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateValidationsmageVerification();
+			}
+	
+	@Test(priority=10,description="Employee Management T1: Custom Fields Image Test")
+	public void CustomFieldImageVerification() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateCustomFieldsImageVerification();
+			}
+	
+	@Test(priority=11,description="Employee Management T1: Cancel Validations Test")
+	public void ValidateCancelbutton() throws IOException, AWTException, InterruptedException {
+			
+		EmployeemanagementpageT1.ValidateCancelbutton();
+			}
+     
+	
+@DataProvider(name="getDetailsPageDataNew1")
 	public Object[][] getTestDataT1(Method m)
 	{
 		Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
 		System.out.println(m.getName());
 		return data;        	
 	}
-	@Test(priority=3,dataProvider="getDetailsPageDataNew1",description="Employee Management T1: Add and Edit Employee Test")
-	public void AddEmployeeTest1(String fn,String Mi, String Ln,String S,String Ed) throws InterruptedException
-	{
-		
-	     EmployeemanagementpageT1.AddEmployee1(fn, Mi, Ln, S, Ed);
-	     
-		}*/
-	/*@DataProvider(name="getDetailsPageDataNew1")
-	public Object[][] getTestDataT1(Method m)
-	{
-		Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
-		System.out.println(m.getName());
-		return data;        	
-	}
-	@Test(priority=3,dataProvider="getDetailsPageDataNew1",description="Employee Management T1: Add and Edit Employee Test")
+	@Test(priority=12,dataProvider="getDetailsPageDataNew1",description="Employee Management T1: Add Employee Test")
 	public void AddEmployeeTest(String fn,String Mi, String Ln,String S,String Ed, String GE,String ET,String Ph,
-			String SS1,String SS2, String SC,String SCO, String SS, String SZ, String SE, String ESE1, String HD,String ES,String AN,
-			String UA,String SD,String ED,String UA1,String SD1,String ED1,String ET1,String A,
+			String SS1,String SS2, String SC,String SCO, String SS, String SZ, String SE, String ESE1, String S1,String S2, String SC1,String SCO1, String St, String SZ1, String SE1,String HD,String DDT,String ES,String AN,
+			String UA,String SD,String ED,String UA1,String SD1,String ED1,String ET1,String A,String EF,
 			String JT,String PED,String PD,String BR,String OT,String DT,String FR,String JT1,String PED1,String PD1,
-			String BR1,String OT1,String DT1,String FR1,String Exp,String Exp1,String ESS,
-			String EEd,String EG,String EET,String EPh, String ESS1,String ESS2, String ESC,String SCO1,
-			String ES1, String ESZ,String ESE, String EAN,String EA,String EJT,String EPED,String EPD,String EBR,String EOT,String EDT,String EFR) throws InterruptedException, IOException 
+			String BR1,String OT1,String DT1,String FR1,String Exp,String Exp1) throws InterruptedException, IOException 
 	{
 		
-	     EmployeemanagementpageT1.AddEmployee(fn, Mi, Ln, S, Ed, GE, ET, Ph, SS1, SS2, SC, SCO, SS, SZ, SE, ESE1, HD, ES, AN, UA, SD, ED, UA1, SD1, ED1, ET1, A, JT, PED, PD, BR, OT, DT, FR, JT1, PED1, PD1, BR1, OT1, DT1, FR1, Exp, Exp1, ESS, EEd, EG,
-	    		 EET, EPh, ESS1, ESS2, ESC, SCO1, ES1, ESZ, ESE, EAN, EA, EJT, EPED, EPD, EBR, EOT, EDT, EFR);
+	     EmployeemanagementpageT1.AddEmployee(fn,Mi,Ln,S,Ed,GE, ET,Ph,
+	 			SS1,SS2,SC,SCO, SS, SZ, SE,ESE1,S1, S2,SC1,SCO1,St,SZ1,SE1, HD,DDT,ES, AN,
+				UA,SD, ED,UA1,SD1, ED1,ET1, A,EF,
+				JT,PED,PD, BR,OT, DT,FR,JT1,PED1, PD1,
+				BR1,OT1,DT1,FR1,Exp,Exp1);
 	     
-		}*/
-/*@DataProvider(name="getEmployeePageData")
+		}
+@DataProvider(name="getEmployeePageData")
 	public Object[][] getTestDataBaseline2(Method m)
 	{
 		Object data[][]=TestUtil.getTestDataBaseline(SheetName1,m.getName());
 		System.out.println(m.getName());
 		return data;        	
 	}
-		@Test(priority=4,dataProvider="getEmployeePageData",description="Employee Management T1 Page: Dropdown Verification")
-		public void EmployeeManagementdropdownVerification(String DGE,String DE, String DC1,String ST1,String ST2,String W,
+		@Test(priority=13,dataProvider="getEmployeePageData",description="Employee Management T1 Page: Dropdown Verification")
+		public void EmployeeManagementdropdownVerification(String AT,String V, String AP,String DGE,String DE, String DC1,String ST1,String ST2,String W,
 				String L,String SU,String T) throws InterruptedException
 		{
-		     EmployeemanagementpageT1.EmployeeManagementDDNVerification(DGE, DE, DC1, ST1, ST2, W, L, SU, T);
+		     EmployeemanagementpageT1.EmployeeManagementDDNVerification(AT,V,AP,DGE, DE, DC1, ST1, ST2, W, L, SU, T);
 			}
 		
-		@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
+	//	@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
 		   public void ImportEmployeePageImage() throws IOException, AWTException
 		   {
 			EmployeemanagementpageT1.ImportEmployeesPageImageVerification();
 		   }
 	
-@DataProvider(name="getImportPageData")
+/*@DataProvider(name="getImportPageData")
 	public Object[][] getTestDataBaseline3(Method m)
 	{
 		Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
@@ -176,7 +220,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 			}*/
 	
 		
-	@DataProvider(name="getEditImportData")
+	/*@DataProvider(name="getEditImportData")
 		   public Object[][] getTestDataImportEdit(Method m)
 			{
 				Object data[][]=TestUtil.getTestData(sheetName, m.getName());
@@ -194,7 +238,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 			    EmployeemanagementpageT1.EditImportEmployee(FL, HD, ES, AN, UA, SD, ED, ET1, A, JT, PED, 
 			    		PD, BR, OT, DT, FR, Exp,FND);
 			    		 
-				}
+				}*/
 		
 	/*@Test(priority=1, description="Employee Management T1: Import Employees Tab Name Test")
 	public void ValidatePDF() throws IOException
@@ -209,7 +253,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 				
 			}
 			
-	//@AfterMethod
+	@AfterMethod
 	public void tearDown()
 	{
 		Driver.quit();
