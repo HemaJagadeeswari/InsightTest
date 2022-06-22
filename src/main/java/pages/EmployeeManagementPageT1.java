@@ -134,6 +134,9 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Cancel')])[1]")
 	WebElement AddressCancel;
 	
+	@FindBy(xpath="(//*[contains(text(),'Update')])")
+	WebElement AddressUpdate;
+	
 	@FindBy(xpath="//*[contains(text(),'Work Info')]")
 	WebElement WorkInfo;
 	
@@ -358,7 +361,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 	
 	@FindBy(xpath="//*[contains(text(),'Work Classes')]")
 	WebElement WorkClasses;
-	
+		
 	public EmployeeManagementPageT1()
 	{
 		PageFactory.initElements(Driver,this);
@@ -808,7 +811,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			String JT,String PED,String PD,String BR,String OT,String DT,String FR,String JT1,String PED1,String PD1,
 			String BR1,String OT1,String DT1,String FR1,String Exp,String Exp1) throws InterruptedException, IOException {
       Thread.sleep(9000);
-		WebDriverWait wait = new WebDriverWait(Driver, 100);
+		WebDriverWait wait = new WebDriverWait(Driver, 110);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'+ Add Employee')]")));
 		AddEmployee.click();
 		
@@ -829,7 +832,6 @@ public class EmployeeManagementPageT1 extends TestBase{
 		JavascriptExecutor exe6 = (JavascriptExecutor)Driver;
 		exe6.executeScript("arguments[0].click();", EmployeeId);
 		EmployeeId.sendKeys(Ed);
-		Phone.click();
 		if(Driver.getPageSource().contains("duplicate")){
 			System.out.println("Employee is duplicate");
 		
@@ -1494,169 +1496,375 @@ public class EmployeeManagementPageT1 extends TestBase{
 					JavascriptExecutor exe3 = (JavascriptExecutor)Driver;
 					exe3.executeScript("arguments[0].click();", SaveandClose);
 					
-			}
-			WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
-			Search.sendKeys(fn);
-			Actions Em1=new Actions(Driver);
-			WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+fn+"')]]"));
-			Em1.moveToElement(Emp1).build();
-			Em1.click(Emp1).perform();
-			FirstName.click();
-			String FN=FirstName.getAttribute("value");
-			if(FN.equals(fn))
-			{
-				System.out.println("First Name Matches");
-			}
-			else
-			{
-				System.out.println("First Name not Matches");
-			}
-			String MN=MiddleInitial.getAttribute("value");
-			if(MN.equals(Mi))
-			{
-				System.out.println("Middle Initial Matches");
-			}
-			else
-			{
-				System.out.println("Middle Initial not Matches");
-			}
-			String LN=LastName.getAttribute("value");
-			if(LN.equals(Ln))
-			{
-				System.out.println("Last Name Matches");
-			}
-			else
-			{
-				System.out.println("Last Name not Matches");
-			}
-			SSN.click();
-			String SN=SSN.getAttribute("value");
-			if(SN.equals(S))
-			{
-				System.out.println("SSN Matches");
-			}
-			else
-			{
-				System.out.println("SSN not Matches");
-			}
-			String EM=EmployeeId.getAttribute("value");
-			EmployeeId.click();
-			if(EM.equals(Ed))
-			{
-				System.out.println("EmployeeID Matches");
-			}
-			else
-			{
-				System.out.println("EmployeeID not Matches");
-				
-			}
-			String G=GenderId.getText();
-			if(G.equals(GE))
-			{
-				System.out.println("Gender Matches");
-			}
-			else
-			{
-				System.out.println("Gender not Matches");
-				
-			}
-			String ETH=EthnicityId.getText();
-			if(ETH.equals(ET))
-			{
-				System.out.println("Ethnicity Matches");
-			}
-			else
-			{
-				System.out.println("Ethnicity not Matches");
-				
-			}
-			String PH=Phone.getAttribute("value");
-			if(PH.equals(Ph))
-			{
-				System.out.println("Phone Matches");
-			}
-			else
-			{
-				System.out.println("Phone not Matches");
-				
-			}
-				
-			AddressHistory.click();
-			Driver.findElement(By.xpath("//*[contains(text(),'"+SS1+"')]//following::button[1]")).click();		
-			//EditAddress.click();
-			Street1.click();
-			String ST1=Street1.getAttribute("value");
-			if(ST1.equals(SS1))
-			{
-				System.out.println("Address: Street1 Matches");
-			}
-			else
-			{
-				System.out.println("Address:Street1 not Matches");
-			}
-			Street2.click();
-			String ST2=Street2.getAttribute("value");
-			if(ST2.equals(SS2))
-			{
-				System.out.println("Address:Street2 Matches");
-			}
-			else
-			{
-				System.out.println("Address:Street2 not Matches");
-				
-			}
-			City.click();
-			String C=City.getAttribute("value");
-			if(C.equals(SC))
-			{
-				System.out.println("Address:City Matches");
-			}
-			else
-			{
-				System.out.println("Address:City not Matches");
-				
-			}
-			Country.click();
-			String CO=Country.getAttribute("value");
-			if(CO.equals(SCO))
-			{
-				System.out.println("Address:Country Matches");
-			}
-			else
-			{
-				System.out.println("Address:Country not Matches");
-				
-			}
-			//State.click();
-			String Sta=State.getText();
-			if(Sta.equals(SS))
-			{
-				System.out.println("Address:State Matches");
-			}
-			else
-			{
-				System.out.println("Address:State not Matches");
-				
-			}
-			Zip.click();
+				}
+		}
+	}
+	
+	public void ValidateAddEmployee(String FL,String fn,String Mi, String Ln,String S,String Ed, String GE,String ET,String Ph,
+			String SS1,String SS2, String SC,String SCO, String SS, String SZ, String SE) throws InterruptedException
+	{
+		
+		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+		Search.sendKeys(FL);
+		Actions Em1=new Actions(Driver);
+		WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]"));
+		Em1.moveToElement(Emp1).build();
+		Em1.click(Emp1).perform();
+		FirstName.click();
+		String FN=FirstName.getAttribute("value");
+		if(FN.equals(fn))
+		{
+			System.out.println("First Name Matches");
+		}
+		else
+		{
+			System.out.println("First Name not Matches");
+		}
+		String MN=MiddleInitial.getAttribute("value");
+		if(MN.equals(Mi))
+		{
+			System.out.println("Middle Initial Matches");
+		}
+		else
+		{
+			System.out.println("Middle Initial not Matches");
+		}
+		String LN=LastName.getAttribute("value");
+		if(LN.equals(Ln))
+		{
+			System.out.println("Last Name Matches");
+		}
+		else
+		{
+			System.out.println("Last Name not Matches");
+		}
+		SSN.click();
+		String SN=SSN.getAttribute("value");
+		if(SN.equals(S))
+		{
+			System.out.println("SSN Matches");
+		}
+		else
+		{
+			System.out.println("SSN not Matches");
+		}
+		String EM=EmployeeId.getAttribute("value");
+		EmployeeId.click();
+		if(EM.equals(Ed))
+		{
+			System.out.println("EmployeeID Matches");
+		}
+		else
+		{
+			System.out.println("EmployeeID not Matches");
 			
-			String Z=Zip.getAttribute("value");
-			if(Z.equals(SZ))
-			{
-				System.out.println("Address:Zip Code Matches");
-			}
-			else
-			{
-				System.out.println("Address:Zip Code not Matches");
-				
-			}
-			AddressCancel.click();
+		}
+		String G=GenderId.getText();
+		if(G.equals(GE))
+		{
+			System.out.println("Gender Matches");
+		}
+		else
+		{
+			System.out.println("Gender not Matches");
 			
-		}		
+		}
+		String ETH=EthnicityId.getText();
+		if(ETH.equals(ET))
+		{
+			System.out.println("Ethnicity Matches");
+		}
+		else
+		{
+			System.out.println("Ethnicity not Matches");
+			
+		}
+		String PH=Phone.getAttribute("value");
+		if(PH.equals(Ph))
+		{
+			System.out.println("Phone Matches");
+		}
+		else
+		{
+			System.out.println("Phone not Matches");
+			
+		}
+			
+		AddressHistory.click();
+		Driver.findElement(By.xpath("//*[contains(text(),'"+SS1+"')]//following::button[1]")).click();		
+		//EditAddress.click();
+		Street1.click();
+		String ST1=Street1.getAttribute("value");
+		if(ST1.equals(SS1))
+		{
+			System.out.println("Address: Street1 Matches");
+		}
+		else
+		{
+			System.out.println("Address:Street1 not Matches");
+		}
+		Street2.click();
+		String ST2=Street2.getAttribute("value");
+		if(ST2.equals(SS2))
+		{
+			System.out.println("Address:Street2 Matches");
+		}
+		else
+		{
+			System.out.println("Address:Street2 not Matches");
+			
+		}
+		City.click();
+		String C=City.getAttribute("value");
+		if(C.equals(SC))
+		{
+			System.out.println("Address:City Matches");
+		}
+		else
+		{
+			System.out.println("Address:City not Matches");
+			
+		}
+		Actions A=new Actions(Driver);
+		WebElement W=Driver.findElement(By.xpath("//input[@id='country']"));
+		A.moveToElement(W).build();
+		A.click(W).perform();
+		
+		String CO=W.getAttribute("value");
+		if(CO.equals(SCO))
+		{
+			System.out.println("Address:Country Matches");
+		}
+		else
+		{
+			System.out.println("Address:Country not Matches");
+			
+		}
+		Thread.sleep(1000);
+		WebElement W1=Driver.findElement(By.xpath("//input[@id='state']"));
+		A.moveToElement(W1).build();
+		A.click(W1).perform();
+		//Driver.findElement(By.xpath("//input[@id='state']")).click();
+		String Sta=W1.getAttribute("value");
+		if(Sta.equals(SS))
+		{
+			System.out.println("Address:State Matches");
+		}
+		else
+		{
+			System.out.println("Address:State not Matches");
+			
+		}
+		Zip.click();
+		
+		String Z=Zip.getAttribute("value");
+		if(Z.equals(SZ))
+		{
+			System.out.println("Address:Zip Code Matches");
+		}
+		else
+		{
+			System.out.println("Address:Zip Code not Matches");
+			
+		}
+	EffectiveDate.click();
+		
+		String EED=EffectiveDate.getAttribute("value");
+		if(EED.equals(SE))
+		{
+			System.out.println("Address:Effective Date Matches");
+		}
+		else
+		{
+			System.out.println("Address:Effective Date not Matches");
+			
+		}
+		AddressCancel.click();
+		
 	}
 	
 	
-
+	public void EditAddEmployee(String FL,String fn,String ESE1,String HD,String DDT,String ES,
+			String UA,String SD,String ED,String ET1, String A,
+			String JT,String PED,String PD,String BR,String OT,String DT,String FR,
+			String Exp,String FND ) throws InterruptedException, IOException
+	{
+		
+		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+		Search.sendKeys(FL);
+		Thread.sleep(2000);
+		Actions Em1=new Actions(Driver);
+		WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]"));
+		Em1.moveToElement(Emp1).build();
+		Em1.click(Emp1).perform();
+		//Driver.findElement(By.xpath("//*[contains(text(),'On Project')]//preceding::input[1]")).click();
+		JavascriptExecutor exe1 = (JavascriptExecutor)Driver;
+		exe1.executeScript("arguments[0].click();", FirstName);
+		Thread.sleep(1000);
+		FirstName.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+		Thread.sleep(1000);
+		FirstName.sendKeys(fn);
+		Driver.findElement(By.xpath("//*[contains(text(),'Veteran')]//preceding::input[1]")).click();
+		AddressHistory.click();
+		Thread.sleep(1000);
+		EditAddress.click();
+		 JavascriptExecutor e1 = (JavascriptExecutor)Driver;
+			e1.executeScript("arguments[0].click();", EffectiveDate);
+			 EffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			EffectiveDate.sendKeys(ESE1);
+			AddressUpdate.click();
+		
+		//WorkInfo
+		 WorkInfo.click();
+		    HireDate.click();
+		    HireDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			HireDate.sendKeys(HD);
+			DateTerminated.click();
+			DateTerminated.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+			 Thread.sleep(1000);
+			 DateTerminated.sendKeys(DDT);
+			Thread.sleep(2000);
+			EmployeeStatus.click();
+			 List<WebElement> EmpSta=Driver.findElements(By.xpath("//div[@id='mui-component-select-employmentStatusId']//following::ul[2]//li"));
+			 System.out.println(EmpSta.size());
+				for(int l=0;l<=EmpSta.size()-1;l++)
+				{
+					System.out.println(EmpSta.get(l).getText());
+				}
+				for(int k=0;k<EmpSta.size();k++)
+				{
+			 if(EmpSta.get(k).getText().equals(ES))
+			 {
+				 EmpSta.get(k).click();
+				 break;
+			 }
+				}
+				
+			//Union
+			Union.click();
+			//AddMembershipbutton.click();
+			SelectUnion.click();
+			 List<WebElement> U=Driver.findElements(By.xpath("//*[contains(text(),'Select a Union')]//following::ul[2]//li"));
+			 System.out.println(U.size());
+				for(int k=0;k<U.size();k++)
+				{
+			 if(U.get(k).getText().equals(UA))
+			 {
+				 U.get(k).click();
+				 break;
+			 }
+				}
+				StartDate.click();
+				StartDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				StartDate.sendKeys(SD);
+				EndDate.click();
+				EndDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				EndDate.sendKeys(ED);
+				Thread.sleep(1000);
+				CustomField.click();
+				EmployeeType.click();
+				 List<WebElement> E1=Driver.findElements(By.xpath("//div[@id='mui-component-select-10011']//following::ul[2]//li"));
+				 System.out.println(E1.size());
+					for(int l=0;l<=E1.size()-1;l++)
+					{
+						System.out.println(E1.get(l).getText());
+					}
+					for(int k=0;k<E1.size();k++)
+					{
+				 if(E1.get(k).getText().equals(ET1))
+				 {
+					 E1.get(k).click();
+					 break;
+				 }
+					}
+			//PayRates
+			//PayRate.click();
+			JavascriptExecutor ex = (JavascriptExecutor)Driver;
+			ex.executeScript("arguments[0].click();", PayRate);
+			EmployeeAssignment.click();
+			 List<WebElement> EmpAssign=Driver.findElements(By.xpath("//div[@id='mui-component-select-10019']//following::ul[2]//li"));
+			 System.out.println(EmpAssign.size());
+				for(int l=0;l<=EmpAssign.size()-1;l++)
+				{
+					System.out.println(EmpAssign.get(l).getText());
+				}
+				for(int k=0;k<EmpAssign.size();k++)
+				{
+			 if(EmpAssign.get(k).getText().equals(A))
+			 {
+				 EmpAssign.get(k).click();
+				 break;
+			 }
+				}
+				AddEntry.click();
+				Thread.sleep(3000);
+				JavascriptExecutor x = (JavascriptExecutor)Driver;
+				x.executeScript("arguments[0].click();", SelectType);
+				Thread.sleep(2000);
+				SelectType.click();
+				 List<WebElement> J=Driver.findElements(By.xpath("//div[@id='mui-component-select-workClassId']//following::ul[2]//li"));
+				 System.out.println(J.size());
+					for(int l=0;l<=J.size()-1;l++)
+					{
+						System.out.println(J.get(l).getText());
+					}
+					for(int k=0;k<J.size();k++)
+					{
+				 if(J.get(k).getText().equals(JT))
+				 {
+					 J.get(k).click();
+					 break;
+				 }
+					}
+					PayEffectiveDate.click();
+					PayEffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					PayEffectiveDate.sendKeys(PED);
+					PayEndDate.click();
+					PayEndDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					PayEndDate.sendKeys(PD);
+					BaseRate.click();
+					BaseRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					BaseRate.sendKeys(BR);
+					OTRate.click();
+					OTRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					OTRate.sendKeys(OT);
+					DTRate.click();
+					DTRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					DTRate.sendKeys(DT);
+					FringeRate.click();
+					FringeRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+					FringeRate.sendKeys(FR);
+					Confirm.click();
+					Thread.sleep(1000);
+						Validations.click();
+						//AddValidationDocument.click();
+						ValidationEdit.click();
+						Expires.click();
+						Thread.sleep(1000);
+						Expires.sendKeys(Keys.BACK_SPACE);
+						Thread.sleep(1000);
+						Expires.sendKeys(Exp);
+						
+						//AddValidationDocument.click();
+						
+						ValidationConfirm.click();
+						WebDriverWait i = new WebDriverWait(Driver, 60);
+						i.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[contains(text(),'Save')])[1]")));
+				    	Thread.sleep(3000);
+						JavascriptExecutor te1 = (JavascriptExecutor)Driver;
+						te1.executeScript("arguments[0].click();", SaveandClose);
+						Thread.sleep(2000);
+						WebDriverWait wai = new WebDriverWait(Driver, 60);
+						wai.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()[contains(.,'"+FND+"')]]")));
+						WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+						Search1.sendKeys(FND);
+						Actions Em2=new Actions(Driver);
+						WebElement Emp2=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FND+"')]]"));
+						Em2.moveToElement(Emp2).build();
+						Em2.click(Emp2).perform();
+						DeleteEmployee.click();
+						Driver.findElement(By.xpath("(//*[contains(text(),'Are you')])[1]//following::button[1]")).click();
+	}
 public void EmployeeManagementDDNVerification(String AT, String V, String AP,String DGE,String DE, String DC1,String ST1,String ST2,String W,
 		String L,String SU,String T) throws InterruptedException
 {
@@ -2502,325 +2710,6 @@ A.moveToElement(Importbutton).build();
 A.click(Importbutton).perform();
 	
 }
-public void ValidateImportEmployee(String FL,String S,String E,String S1,String S2,String CI,String ST,String ZI,
-		String GE,String ETH,String P,String VT) throws InterruptedException
-{
-	
-	WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
-	Search.sendKeys(FL);
-	Actions Em1=new Actions(Driver);
-	WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]"));
-	Em1.moveToElement(Emp1).build();
-	Em1.click(Emp1).perform();
-	SSN.click();
-	String SN=SSN.getAttribute("value");
-	if(SN.equals(S))
-	{
-		System.out.println("SSN Matches");
-	}
-	else
-	{
-		System.out.println("SSN not Matches");
-	}
-	String EM=EmployeeId.getAttribute("value");
-	EmployeeId.click();
-	if(EM.equals(E))
-	{
-		System.out.println("EmployeeID Matches");
-	}
-	else
-	{
-		System.out.println("EmployeeID not Matches");
-		
-	}
-	AddressHistory.click();
-	EditAddress.click();
-	Street1.click();
-	String ST1=Street1.getAttribute("value");
-	if(ST1.equals(S1))
-	{
-		System.out.println("Address: Street1 Matches");
-	}
-	else
-	{
-		System.out.println("Address:Street1 not Matches");
-	}
-	Street2.click();
-	String ST2=Street2.getAttribute("value");
-	if(ST2.equals(S2))
-	{
-		System.out.println("Address:Street2 Matches");
-	}
-	else
-	{
-		System.out.println("Address:Street2 not Matches");
-		
-	}
-	City.click();
-	String C=City.getAttribute("value");
-	if(C.equals(CI))
-	{
-		System.out.println("Address:City Matches");
-	}
-	else
-	{
-		System.out.println("Address:City not Matches");
-		
-	}
-	//State.click();
-	String Sta=State.getText();
-	if(Sta.equals(ST))
-	{
-		System.out.println("Address:State Matches");
-	}
-	else
-	{
-		System.out.println("Address:State not Matches");
-		
-	}
-	Zip.click();
-	
-	String Z=Zip.getAttribute("value");
-	if(Z.equals(ZI))
-	{
-		System.out.println("Address:Zip Code Matches");
-	}
-	else
-	{
-		System.out.println("Address:Zip Code not Matches");
-		
-	}
-	AddressCancel.click();
-	Actions AM=new Actions(Driver);
-	WebElement EMP=Driver.findElement(By.xpath("(//*[contains(text(),'Employee')])[5]//following::button[1]"));
-	AM.moveToElement(EMP).build();
-	AM.click(EMP).perform();
-	
-	String G=GenderId.getText();
-	if(G.equals(GE))
-	{
-		System.out.println("Gender Matches");
-	}
-	else
-	{
-		System.out.println("Gender not Matches");
-		
-	}
-	String ET=EthnicityId.getText();
-	if(ET.equals(ETH))
-	{
-		System.out.println("Ethnicity Matches");
-	}
-	else
-	{
-		System.out.println("Ethnicity not Matches");
-		
-	}
-	String PH=Phone.getAttribute("value");
-	if(PH.equals(P))
-	{
-		System.out.println("Phone Matches");
-	}
-	else
-	{
-		System.out.println("Phone not Matches");
-		
-	}
-	String V=VeteranStatusToggle.getAttribute("value");
-	if(V.toUpperCase().equals(VT))
-	{
-	System.out.println("Veteran Status Toggle selection is matching");
-	}
-	else
-	{
-		System.out.println("Veteran Status Toggle selection is not matching");
-	}
-	
-}
-public void EditImportEmployee(String FL,String HD,String ES,String AN,
-		String UA,String SD,String ED,String ET1, String A,
-		String JT,String PED,String PD,String BR,String OT,String DT,String FR,
-		String Exp,String FND ) throws InterruptedException
-{
-	
-	WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
-	Search.sendKeys(FL);
-	Thread.sleep(2000);
-	Actions Em1=new Actions(Driver);
-	WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]"));
-	Em1.moveToElement(Emp1).build();
-	Em1.click(Emp1).perform();
-	Driver.findElement(By.xpath("//*[contains(text(),'On Project')]//preceding::input[1]")).click();
-	//WorkInfo
-	 WorkInfo.click();
-	    HireDate.click();
-	    HireDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-		HireDate.sendKeys(HD);
-		Thread.sleep(2000);
-		EmployeeStatus.click();
-		 List<WebElement> EmpSta=Driver.findElements(By.xpath("//div[@id='mui-component-select-employmentStatusId']//following::ul[2]//li"));
-		 System.out.println(EmpSta.size());
-			for(int l=0;l<=EmpSta.size()-1;l++)
-			{
-				System.out.println(EmpSta.get(l).getText());
-			}
-			for(int k=0;k<EmpSta.size();k++)
-			{
-		 if(EmpSta.get(k).getText().equals(ES))
-		 {
-			 EmpSta.get(k).click();
-			 break;
-		 }
-			}
-			ApprenticeNumber.click();
-	    ApprenticeNumber.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));	
-		ApprenticeNumber.sendKeys(AN);
-		Thread.sleep(2000);
-		//Union
-		Union.click();
-		AddMembershipbutton.click();
-		SelectUnion.click();
-		 List<WebElement> U=Driver.findElements(By.xpath("//*[contains(text(),'Select a Union')]//following::ul[2]//li"));
-		 System.out.println(U.size());
-			for(int l=0;l<=U.size()-1;l++)
-			{
-				System.out.println(U.get(l).getText());
-			}
-			for(int k=0;k<U.size();k++)
-			{
-		 if(U.get(k).getText().equals(UA))
-		 {
-			 U.get(k).click();
-			 break;
-		 }
-			}
-			StartDate.click();
-			StartDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			StartDate.sendKeys(SD);
-			EndDate.click();
-			EndDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			EndDate.sendKeys(ED);
-			Thread.sleep(1000);
-			CustomField.click();
-			EmployeeType.click();
-			 List<WebElement> E1=Driver.findElements(By.xpath("//div[@id='mui-component-select-10011']//following::ul[2]//li"));
-			 System.out.println(E1.size());
-				for(int l=0;l<=E1.size()-1;l++)
-				{
-					System.out.println(E1.get(l).getText());
-				}
-				for(int k=0;k<E1.size();k++)
-				{
-			 if(E1.get(k).getText().equals(ET1))
-			 {
-				 E1.get(k).click();
-				 break;
-			 }
-				}
-		//PayRates
-		//PayRate.click();
-		JavascriptExecutor ex = (JavascriptExecutor)Driver;
-		ex.executeScript("arguments[0].click();", PayRate);
-		EmployeeAssignment.click();
-		 List<WebElement> EmpAssign=Driver.findElements(By.xpath("//div[@id='mui-component-select-10019']//following::ul[2]//li"));
-		 System.out.println(EmpAssign.size());
-			for(int l=0;l<=EmpAssign.size()-1;l++)
-			{
-				System.out.println(EmpAssign.get(l).getText());
-			}
-			for(int k=0;k<EmpAssign.size();k++)
-			{
-		 if(EmpAssign.get(k).getText().equals(A))
-		 {
-			 EmpAssign.get(k).click();
-			 break;
-		 }
-			}
-			AddEntry.click();
-			Thread.sleep(3000);
-			JavascriptExecutor x = (JavascriptExecutor)Driver;
-			x.executeScript("arguments[0].click();", SelectType);
-			Thread.sleep(2000);
-			SelectType.click();
-			 List<WebElement> J=Driver.findElements(By.xpath("//div[@id='mui-component-select-workClassId']//following::ul[2]//li"));
-			 System.out.println(J.size());
-				for(int l=0;l<=J.size()-1;l++)
-				{
-					System.out.println(J.get(l).getText());
-				}
-				for(int k=0;k<J.size();k++)
-				{
-			 if(J.get(k).getText().equals(JT))
-			 {
-				 J.get(k).click();
-				 break;
-			 }
-				}
-				PayEffectiveDate.click();
-				PayEffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				PayEffectiveDate.sendKeys(PED);
-				PayEndDate.click();
-				PayEndDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				PayEndDate.sendKeys(PD);
-				BaseRate.click();
-				BaseRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				BaseRate.sendKeys(BR);
-				OTRate.click();
-				OTRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				OTRate.sendKeys(OT);
-				DTRate.click();
-				DTRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				DTRate.sendKeys(DT);
-				FringeRate.click();
-				FringeRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-				FringeRate.sendKeys(FR);
-				Confirm.click();
-				Thread.sleep(1000);
-					Validations.click();
-					//AddValidationDocument.click();
-					AddDocumentRow.click();
-					Drophere.click();
-					String strSel = "F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\347.pdf";
-					try {
-						Robot robot = new Robot();
-						StringSelection Selection = new StringSelection(strSel);
-						Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Selection, null);
-							robot.setAutoDelay(2000);                                                                                
-							robot.keyPress(KeyEvent.VK_CONTROL);
-							robot.keyPress(KeyEvent.VK_V);
-							robot.keyRelease(KeyEvent.VK_CONTROL);
-							robot.keyRelease(KeyEvent.VK_V);
-							robot.keyPress(KeyEvent.VK_ENTER);
-							robot.keyRelease(KeyEvent.VK_ENTER);		
-							
-						} catch (AWTException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-					}
-					Expires.click();
-					Expires.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-					Expires.sendKeys(Exp);
-					
-					//AddValidationDocument.click();
-					
-					ValidationConfirm.click();
-					WebDriverWait i = new WebDriverWait(Driver, 60);
-					i.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[contains(text(),'Save')])[1]")));
-			    	Thread.sleep(3000);
-					JavascriptExecutor te1 = (JavascriptExecutor)Driver;
-					te1.executeScript("arguments[0].click();", SaveandClose);
-					Thread.sleep(2000);
-					WebDriverWait wai = new WebDriverWait(Driver, 60);
-					wai.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()[contains(.,'"+FND+"')]]")));
-					WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
-					Search1.sendKeys(FND);
-					Actions Em2=new Actions(Driver);
-					WebElement Emp2=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FND+"')]]"));
-					Em2.moveToElement(Emp2).build();
-					Em2.click(Emp2).perform();
-					DeleteEmployee.click();
-					Driver.findElement(By.xpath("(//*[contains(text(),'Are you')])[1]//following::button[2]")).click();
-}
 public WorkClassesPageT1 WClaunch() {
 	// TODO Auto-generated method stub
 	WorkClasses.click();
@@ -2831,13 +2720,7 @@ public WorkClassesPageT1 WClaunch() {
 
 /*	public String pdfcompare()throws IOException
 	{
-		
 	
-	
-	1
-	
-	103
-	201.
 	
 	//PDF Util
 	//String FolderLocation="C:\\Users\\prince\\Downloads\\New";

@@ -27,8 +27,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 	SetupPageT1 SetuppageT1;
 	DetailsPageT1 DetailspageT1;
 	EmployeeManagementPageT1 EmployeemanagementpageT1;
-	//
-	private static String fileDownloadpath = "F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Download";
+	
 	
 	public EmployeeManagementPageT1Test()
 	{
@@ -145,6 +144,44 @@ public class EmployeeManagementPageT1Test extends TestBase{
 				BR1,OT1,DT1,FR1,Exp,Exp1);
 	     
 		}
+	
+	@DataProvider(name="Verification")
+	public Object[][] getTestDataAdd(Method m)
+	{
+		Object data[][]=TestUtil.getTestData(sheetName,m.getName());
+		System.out.println(m.getName());
+		return data;        	
+	}
+	   
+		@Test(priority=13,dataProvider="Verification",description="Employee Management T1 Page:Imported Employee Test")
+		   public void AddedEmployeeTest(String FL,String fn,String Mi, String Ln,String S,String Ed, String GE,String ET,String Ph,
+					String SS1,String SS2, String SC,String SCO, String SS, String SZ, String SE) throws IOException, AWTException, InterruptedException
+		   {
+		    EmployeemanagementpageT1.ValidateAddEmployee(FL,fn,Mi,Ln, S,Ed, GE,ET, Ph,
+		    		SS1,SS2,SC,SCO, SS, SZ, SE);
+			}
+
+	@DataProvider(name="getEditImportData")
+		   public Object[][] getTestDataEdit(Method m)
+			{
+				Object data[][]=TestUtil.getTestData(sheetName, m.getName());
+				System.out.println(m.getName());
+				return data;
+				
+			}
+		   
+			@Test(priority=14,dataProvider="getEditImportData",description="Employee Management T1 Page:Import Employee Test")
+			   public void EditAddEmployeeTest(String FL,String fn,String ESE1,String HD,String DDT,String ES,
+						String UA,String SD,String ED,String ET1, String A,
+						String JT,String PED,String PD,String BR,String OT,String DT,String FR,
+						String Exp,String FND ) throws IOException, AWTException, InterruptedException
+			   {
+			    EmployeemanagementpageT1.EditAddEmployee(FL,fn,ESE1,HD,DDT,ES,
+						 UA, SD, ED, ET1,  A,
+						 JT, PED, PD,BR, OT,DT, FR,
+						Exp, FND );
+			   }			
+
 @DataProvider(name="getEmployeePageData")
 	public Object[][] getTestDataBaseline2(Method m)
 	{

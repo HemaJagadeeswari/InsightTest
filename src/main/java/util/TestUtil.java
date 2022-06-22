@@ -72,13 +72,16 @@ public class TestUtil extends TestBase{
 				  case "AddEmployeeTest":
 					  strSheetName="T1AddEmployee";
 					break;
+					
+				  case "EditAddEmployeeTest":
+					  strSheetName="T1EditAddEmployee";
+					break; 
+					
 				  case "CreateEmployeeLayoutTest":
 					  strSheetName="T1ImportEmployee";
 					break;
 					
-				  case "EditImportEmployeeTest":
-					  strSheetName="T1EditImport";
-					break; 
+				 
 					
 				  case "AddEmployeeTest1":
 					  strSheetName="T1AddEmployee1";
@@ -95,6 +98,11 @@ public class TestUtil extends TestBase{
 				  case "EditManualPayroll":
 					  strSheetName="T1EditPayroll";
 					break;
+						
+				  case "AddedEmployeeTest":
+					  strSheetName="ExistingEmployee";
+					break;
+				 
 				}
 				
 				
