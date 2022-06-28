@@ -2,6 +2,7 @@ package testcases;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,7 +26,7 @@ public void setup()
 	Loginpage=new LoginPage();
 	}
 	
-@Test(priority=0,description="Login Page: Page Title Test")
+/*@Test(priority=0,description="Login Page: Page Title Test")
 public void LoginPageTitleTest()
 {
 	String title=LoginPage.ValidateLoginPageTitle();
@@ -42,7 +43,7 @@ Loginpage.LoginPageImageVerification();
 public void ForgotPasswordImageVerification() throws IOException
 {
 Loginpage.ForgotPasswordImageVerification();
-}
+}*/
 //Forgot Password functionality commented as per Kyle "probably want to skip that step in automation, as that does generate a new password and invalidate the old one" dated April 18 2022
 //@Test(priority=3,description="Login Page: Forgot Password dialog Test" )
 public void ForgotPasswordVerification() throws IOException
@@ -50,7 +51,15 @@ public void ForgotPasswordVerification() throws IOException
 	Loginpage.ForgotPassword(prop.getProperty("ForgotPassword"));
 }
 
-@Test(priority=3,description="Login Page: Login to Application")
+@Test(priority=1,description="Login Page: Login button Enabled/Disabled Test" )
+public void Loginbutton()
+{
+	WebElement L=Loginpage.LoginbuttonVerification();
+	Assert.assertEquals(false, L.isEnabled());
+
+}
+
+//@Test(priority=3,description="Login Page: Login to Application")
 public void LoginTest()
 {
 	

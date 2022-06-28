@@ -41,6 +41,14 @@ public class LoginPageT1 extends TestBase{
 		PageFactory.initElements(Driver,this);
 		
 	}
+	
+	public WebElement LoginbuttonVerification()
+	{
+		WebElement W = Driver.findElement(By.xpath("//*[contains(text(),'Forgot')]//following::button"));
+		return W;
+		
+	}
+	
 	public  HomePageT1 LoginT1(String UNT1,String PWT1)
 	{
 		emailaddress.sendKeys(UNT1);

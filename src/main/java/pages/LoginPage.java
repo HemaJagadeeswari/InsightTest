@@ -122,8 +122,17 @@ public void ForgotPassword(String FP) {
 	Okbutton.click();
 }
 
+public WebElement LoginbuttonVerification()
+{
+	WebElement W = Driver.findElement(By.xpath("//*[contains(text(),'Forgot')]//following::button"));
+	return W;
+	
+}
+
+
 public HomePage Login(String UN,String PW)
 {
+	
 	emailaddress.sendKeys(UN);
 	Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 	password.sendKeys(PW);
