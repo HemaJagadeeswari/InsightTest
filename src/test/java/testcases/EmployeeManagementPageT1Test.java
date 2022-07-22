@@ -190,57 +190,27 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		return data;        	
 	}
 		@Test(priority=13,dataProvider="getEmployeePageData",description="Employee Management T1 Page: Dropdown Verification")
-		public void EmployeeManagementdropdownVerification(String AT,String V, String AP,String DGE,String DE, String DC1,String ST1,String ST2,String W,
+		public void EmployeeManagementdropdownVerification(String SL,String AT, String V, String AP,String DGE,String DE, String DC1,String ST1,String ST2,String W,
 				String L,String SU,String T) throws InterruptedException
 		{
-		     EmployeemanagementpageT1.EmployeeManagementDDNVerification(AT,V,AP,DGE, DE, DC1, ST1, ST2, W, L, SU, T);
+		     EmployeemanagementpageT1.EmployeeManagementDDNVerification(SL,AT, V, AP, DGE,DE, DC1,ST1,ST2,W,
+		    			L,SU,T);
 			}
 		
-	//	@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
+	@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
 		   public void ImportEmployeePageImage() throws IOException, AWTException
 		   {
 			EmployeemanagementpageT1.ImportEmployeesPageImageVerification();
 		   }
 	
-/*@DataProvider(name="getImportPageData")
-	public Object[][] getTestDataBaseline3(Method m)
-	{
-		Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
-		System.out.println(m.getName());
-		return data;        	
-	}
-		@Test(priority=6,dataProvider="getImportPageData",description="Employee Management T1 Page: Import Employee Test")
-		public void CreateEmployeeLayoutTest(String LN,String LT1,String VA,String VB,String VC,String VD,String VE,String VF,String VG,
-				String VH,String VI,String VJ,String VK,String VL,String VM,String VN,String VO) throws InterruptedException, IOException, AWTException
-		{
-		     EmployeemanagementpageT1.CreateEmployeeLayout(LN,LT1,VA,VB,VC,VD,VE,VF,VG,
-		    			VH,VI,VJ,VK,VL,VM,VN,VO);
-			}
-
-	@Test(priority=7,description="Employee Management T1 Page:Employee Layout Edit Test")
-	   public void ImportEmployeeLayoutEdit() throws IOException, AWTException, InterruptedException
-	   {
-		
-		EmployeemanagementpageT1.EditEmployeeLayout();	
-	   }
-	
-	@Test(priority=8,description="Employee Management T1 Page:Download the Employee Layout Test")
-	   public void DownloadEmployeeLayout() throws IOException, AWTException, InterruptedException
-	   {
-		if (TestUtil.isFileDownloaded(fileDownloadpath, "skillsmart-employee-template (1).xlsx")) {
-			System.out.println("Import Employee:Dowloaded Excel Layout Matches");
-		}else {
-			System.out.println("Import Employee:Dowloaded Excel Layout not Matches");
-		}
-	   }*/
 	   
-	//@Test(priority=9,description="Employee Management T1 Page:Import Employee Test")
+	@Test(priority=9,description="Employee Management T1 Page:Import Employee Test")
 	   public void ImportEmployeeTest() throws IOException, AWTException, InterruptedException
 	   {
-		   EmployeemanagementpageT1.ImportEmployeeLayout();
+		   EmployeemanagementpageT1.ImportEmployees();
 	   }
 	   
-	/*@DataProvider(name="getImportDataValue")
+	@DataProvider(name="getImportDataValue")
 	   public Object[][] getTestDataImport(Method m)
 		{
 			Object data[][]=TestUtil.ImportTest(SheetName2, m.getName());
@@ -250,14 +220,15 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		}
 	   
 		@Test(priority=10,dataProvider="getImportDataValue",description="Employee Management T1 Page:Imported Employee Test")
-		   public void ImportedEmployeeTest(String FL,String S,String E,String S1,String S2,String CI,String ST,String ZI,String GE,String ETH,String P,String VT) throws IOException, AWTException, InterruptedException
+		   public void ImportedEmployeeTest(String FN,String Mi, String Ln,String S,String Ed,
+					String SS1,String SS2, String SC, String SS, String SZ,String GE,String ET,String Ph1) throws IOException, AWTException, InterruptedException
 		   {
-		    EmployeemanagementpageT1.ValidateImportEmployee(FL, S, E, S1, S2, CI, ST, ZI, GE, 
-		    		ETH, P, VT);
-			}*/
+		    EmployeemanagementpageT1.ValidateImportedEmployee(FN, Mi, Ln,S,Ed,
+		    		SS1,SS2, SC, SS, SZ,GE,ET,Ph1);
+			}
 	
 		
-	/*@DataProvider(name="getEditImportData")
+	@DataProvider(name="getEditImportData")
 		   public Object[][] getTestDataImportEdit(Method m)
 			{
 				Object data[][]=TestUtil.getTestData(sheetName, m.getName());
@@ -266,17 +237,47 @@ public class EmployeeManagementPageT1Test extends TestBase{
 				
 			}
 		   
-			@Test(priority=11,dataProvider="getEditImportData",description="Employee Management T1 Page:Import Employee Test")
-			   public void EditImportEmployeeTest(String FL,String HD,String ES,String AN,
+			@Test(priority=11,dataProvider="getEditImportData",description="Employee Management T1 Page:Edit Import Employee Test")
+			   public void EditImportEmployeeTest(String FL,String HD,String DDT,String ES,String AN,
 						String UA,String SD,String ED,String ET1, String A,
 						String JT,String PED,String PD,String BR,String OT,String DT,String FR,
-						String Exp,String FND) throws IOException, AWTException, InterruptedException
+						String Exp,String FL1,String ET2,String A1,
+						String JT1,String PED1,String PD1,String BR1,String OT1,String DT1,String FR1,String FL2) throws IOException, AWTException, InterruptedException
 			   {
-			    EmployeemanagementpageT1.EditImportEmployee(FL, HD, ES, AN, UA, SD, ED, ET1, A, JT, PED, 
-			    		PD, BR, OT, DT, FR, Exp,FND);
-			    		 
-				}*/
+			    EmployeemanagementpageT1.ImportEditAddEmployee(FL, HD, DDT, ES, AN, UA, SD, ED, ET1, UA, JT, PED, PD, BR, OT, DT, FR, Exp, FL1, ET2, A1, JT1, PED1, PD1, BR1, OT1, DT1, FR1, FL2);
+				}
+	   /*@DataProvider(name="getImportPageData")
+		public Object[][] getTestDataBaseline3(Method m)
+		{
+			Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
+			System.out.println(m.getName());
+			return data;        	
+		}
+			@Test(priority=6,dataProvider="getImportPageData",description="Employee Management T1 Page: Import Employee Test")
+			public void CreateEmployeeLayoutTest(String LN,String LT1,String VA,String VB,String VC,String VD,String VE,String VF,String VG,
+					String VH,String VI,String VJ,String VK,String VL,String VM,String VN,String VO) throws InterruptedException, IOException, AWTException
+			{
+			     EmployeemanagementpageT1.CreateEmployeeLayout(LN,LT1,VA,VB,VC,VD,VE,VF,VG,
+			    			VH,VI,VJ,VK,VL,VM,VN,VO);
+				}
+
+		@Test(priority=7,description="Employee Management T1 Page:Employee Layout Edit Test")
+		   public void ImportEmployeeLayoutEdit() throws IOException, AWTException, InterruptedException
+		   {
+			
+			EmployeemanagementpageT1.EditEmployeeLayout();	
+		   }
 		
+		@Test(priority=8,description="Employee Management T1 Page:Download the Employee Layout Test")
+		   public void DownloadEmployeeLayout() throws IOException, AWTException, InterruptedException
+		   {
+			if (TestUtil.isFileDownloaded(fileDownloadpath, "skillsmart-employee-template (1).xlsx")) {
+				System.out.println("Import Employee:Dowloaded Excel Layout Matches");
+			}else {
+				System.out.println("Import Employee:Dowloaded Excel Layout not Matches");
+			}
+		   }*/
+
 	/*@Test(priority=1, description="Employee Management T1: Import Employees Tab Name Test")
 	public void ValidatePDF() throws IOException
 	{
