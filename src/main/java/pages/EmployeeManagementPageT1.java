@@ -354,6 +354,9 @@ public class EmployeeManagementPageT1 extends TestBase{
 	WebElement Cancel;
 	
 	@FindBy(xpath="//*[contains(text(),'Cancel')]//following::button[1]")
+	WebElement TestImportbutton;
+	
+	@FindBy(xpath="//*[contains(text(),'Cancel')]//following::button[2]")
 	WebElement Importbutton;
 	
 	@FindBy(xpath="//*[contains(text(),'Delete Employee')]")
@@ -365,8 +368,8 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="//*[contains(text(),'Logout')]")
 	WebElement Logout;
 	
-	@FindBy(xpath="//*[contains(text(),'Work Classes')]")
-	WebElement WorkClasses;
+	@FindBy(xpath="//*[contains(text(),'Payroll Entry')]")
+	WebElement PayrollEntry;
 		
 	public EmployeeManagementPageT1()
 	{
@@ -1710,8 +1713,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 	}
 	
 	
-	public void EditAddEmployee(String FL,String fn,String ESE1,String HD,String DDT,String ES,
-			String UA,String SD,String ED,String ET1, String A,
+	public void EditAddEmployee(String FL,String fn,String ESE1,String HD,String DDT,String ES,String SD,String ED,String ET1, String A,
 			String JT,String PED,String PD,String BR,String OT,String DT,String FR,
 			String Exp,String FND ) throws InterruptedException, IOException
 	{
@@ -1769,7 +1771,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			//Union
 			Union.click();
 			//AddMembershipbutton.click();
-			SelectUnion.click();
+		/*	SelectUnion.click();
 			 List<WebElement> U=Driver.findElements(By.xpath("//*[contains(text(),'Select a Union')]//following::ul[2]//li"));
 			 System.out.println(U.size());
 				for(int k=0;k<U.size();k++)
@@ -1779,7 +1781,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 				 U.get(k).click();
 				 break;
 			 }
-				}
+				}*/
 				StartDate.click();
 				StartDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 				StartDate.sendKeys(SD);
@@ -1822,6 +1824,8 @@ public class EmployeeManagementPageT1 extends TestBase{
 				 break;
 			 }
 				}
+				Thread.sleep(3000);
+				//SaveEntry.click();
 				AddEntry.click();
 				Thread.sleep(3000);
 				JavascriptExecutor x = (JavascriptExecutor)Driver;
@@ -2482,10 +2486,24 @@ public void ImportEmployees() throws InterruptedException
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 	}
-Actions A=new Actions(Driver);
-A.moveToElement(Importbutton).build();
-A.click(Importbutton).perform();
-	
+	Actions A=new Actions(Driver);
+	A.moveToElement(TestImportbutton).build();
+	A.click(TestImportbutton).perform();
+	String TestImport="No import conflicts, click the import button to the right to proceed.";
+	WebElement Transition2=Driver.findElement(By.xpath("//*[contains(text(),'conflicts')]"));
+	String UI1=Transition2.getText();
+System.out.println(UI1);
+//String St1="We have located this employee in our Database and have pre-populated some fields for you.";
+	if(TestImport.equals(UI1))
+	{
+		System.out.println("Alert Message Matches");
+		System.out.println("There is no Import Conflicts.");
+	}
+	else
+	{
+		System.out.println("Alert Message not Matches");
+	}
+Importbutton.click();	
 }
 
 
@@ -2774,7 +2792,6 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 				 break;
 			 }
 				}
-				
 		//PayRates
 		//PayRate.click();
 		JavascriptExecutor ex = (JavascriptExecutor)Driver;
@@ -2786,7 +2803,9 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 		Thread.sleep(1000);	
 		JavascriptExecutor xe1 = (JavascriptExecutor)Driver;
 		xe1.executeScript("arguments[0].click();", PayRate);
+		Thread.sleep(1000);
 		EmployeeAssignment.click();
+		
 		 List<WebElement> EmpAssign=Driver.findElements(By.xpath("//div[@id='mui-component-select-10019']//following::ul[2]//li"));
 		 System.out.println(EmpAssign.size());
 			for(int l=0;l<=EmpAssign.size()-1;l++)
@@ -2801,7 +2820,10 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 			 break;
 		 }
 			}
-			AddEntry.click();
+			Thread.sleep(1000);
+			JavascriptExecutor xa = (JavascriptExecutor)Driver;
+			xa.executeScript("arguments[0].click();", AddEntry);
+			//AddEntry.click();
 			Thread.sleep(3000);
 			JavascriptExecutor x = (JavascriptExecutor)Driver;
 			x.executeScript("arguments[0].click();", SelectType);
@@ -3348,10 +3370,13 @@ public void ValidateDownloadEmployeeLayout() throws InterruptedException
 }
 
 
-public WorkClassesPageT1 WClaunch() {
+public PayrollEntryPageT1 PElaunch() throws InterruptedException {
 	// TODO Auto-generated method stub
-	WorkClasses.click();
-	return new WorkClassesPageT1();
+	Thread.sleep(2000);
+	WebDriverWait wait = new WebDriverWait(Driver, 80);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Payroll Entry')]")));
+	PayrollEntry.click();
+	return new PayrollEntryPageT1();
 }
 
 }

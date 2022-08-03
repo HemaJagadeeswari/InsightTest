@@ -43,6 +43,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		Thread.sleep(2000);
 		DashboardpageT1=SetuppageT1.PageView1();
 		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
+		Thread.sleep(1000);
 		EmployeemanagementpageT1=DetailspageT1.EMlaunch();
 		}
 	
@@ -73,7 +74,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		Assert.assertEquals(IE,"IMPORT EMPLOYEES","Import Employees Tab Name not matching");
 	}*/
 	
-	@Test(priority=4,description="Employee Management T1: Employee Image Test")
+	/*@Test(priority=4,description="Employee Management T1: Employee Image Test")
 	public void EmployeeImageVerification() throws IOException, AWTException, InterruptedException {
 			
 		EmployeemanagementpageT1.ValidateEmployeeViewImageVerification();
@@ -120,9 +121,9 @@ public class EmployeeManagementPageT1Test extends TestBase{
 			
 		EmployeemanagementpageT1.ValidateCancelbutton();
 			}
-     
+     */
 	
-@DataProvider(name="getDetailsPageDataNew1")
+/*@DataProvider(name="getDetailsPageDataNew1")
 	public Object[][] getTestDataT1(Method m)
 	{
 		Object data[][]=TestUtil.getTestData(SheetName1,m.getName());
@@ -143,9 +144,9 @@ public class EmployeeManagementPageT1Test extends TestBase{
 				JT,PED,PD, BR,OT, DT,FR,JT1,PED1, PD1,
 				BR1,OT1,DT1,FR1,Exp,Exp1);
 	     
-		}
+		}*/
 	
-	@DataProvider(name="Verification")
+/*@DataProvider(name="Verification")
 	public Object[][] getTestDataAdd(Method m)
 	{
 		Object data[][]=TestUtil.getTestData(sheetName,m.getName());
@@ -159,9 +160,9 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		   {
 		    EmployeemanagementpageT1.ValidateAddEmployee(FL,fn,Mi,Ln, S,Ed, GE,ET, Ph,
 		    		SS1,SS2,SC,SCO, SS, SZ, SE);
-			}
+		}*/
 
-	@DataProvider(name="getEditImportData")
+/*	@DataProvider(name="getEditAddEmployeeData")
 		   public Object[][] getTestDataEdit(Method m)
 			{
 				Object data[][]=TestUtil.getTestData(sheetName, m.getName());
@@ -170,19 +171,17 @@ public class EmployeeManagementPageT1Test extends TestBase{
 				
 			}
 		   
-			@Test(priority=14,dataProvider="getEditImportData",description="Employee Management T1 Page:Import Employee Test")
-			   public void EditAddEmployeeTest(String FL,String fn,String ESE1,String HD,String DDT,String ES,
-						String UA,String SD,String ED,String ET1, String A,
+			@Test(priority=14,dataProvider="getEditAddEmployeeData",description="Employee Management T1 Page:Edit Add Employee Test")
+			   public void EditAddEmployeeTest(String FL,String fn,String ESE1,String HD,String DDT,String ES,String SD,String ED,String ET1, String A,
 						String JT,String PED,String PD,String BR,String OT,String DT,String FR,
 						String Exp,String FND ) throws IOException, AWTException, InterruptedException
 			   {
-			    EmployeemanagementpageT1.EditAddEmployee(FL,fn,ESE1,HD,DDT,ES,
-						 UA, SD, ED, ET1,  A,
+			    EmployeemanagementpageT1.EditAddEmployee(FL,fn,ESE1,HD,DDT,ES, SD, ED, ET1,  A,
 						 JT, PED, PD,BR, OT,DT, FR,
 						Exp, FND );
-			   }			
+			   }	*/
 
-@DataProvider(name="getEmployeePageData")
+/*@DataProvider(name="getEmployeePageData")
 	public Object[][] getTestDataBaseline2(Method m)
 	{
 		Object data[][]=TestUtil.getTestDataBaseline(SheetName1,m.getName());
@@ -202,15 +201,15 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		   {
 			EmployeemanagementpageT1.ImportEmployeesPageImageVerification();
 		   }
-	
+	*/
 	   
-	@Test(priority=9,description="Employee Management T1 Page:Import Employee Test")
+/*@Test(priority=9,description="Employee Management T1 Page:Import Employee Test")
 	   public void ImportEmployeeTest() throws IOException, AWTException, InterruptedException
 	   {
 		   EmployeemanagementpageT1.ImportEmployees();
-	   }
+	   }*/
 	   
-	@DataProvider(name="getImportDataValue")
+/*@DataProvider(name="getImportDataValue")
 	   public Object[][] getTestDataImport(Method m)
 		{
 			Object data[][]=TestUtil.ImportTest(SheetName2, m.getName());
@@ -227,7 +226,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		    		SS1,SS2, SC, SS, SZ,GE,ET,Ph1);
 			}
 	
-		
+		*/
 	@DataProvider(name="getEditImportData")
 		   public Object[][] getTestDataImportEdit(Method m)
 			{
@@ -284,12 +283,12 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		String S=EmployeemanagementpageT1.pdfcompare();
 		Assert.assertTrue(S.contains("PAYROLL"));
 	}*/
-			//@Test(priority=12, description="Work Classes T1 Page: Launching Test")
-			public void ValidateWorkClassesPageLaunch()
+		/*	@Test(priority=12, description="Payroll Entry T1 Page: Launching Test")
+			public void ValidatePayrollEntryPageLaunch() throws InterruptedException
 			{
-				EmployeemanagementpageT1.WClaunch();
+				EmployeemanagementpageT1.PElaunch();
 				
-			}
+			}*/
 			
 	@AfterMethod
 	public void tearDown()
