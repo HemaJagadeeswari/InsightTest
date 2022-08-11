@@ -350,13 +350,13 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="//a[@href='files/skillsmart-employee-template.xlsx']")
 	WebElement DownloadFile;
 	
-	@FindBy(xpath="//*[contains(text(),'Cancel')]")
+	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]")
 	WebElement Cancel;
 	
-	@FindBy(xpath="//*[contains(text(),'Cancel')]//following::button[1]")
+	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]//following::button[1]")
 	WebElement TestImportbutton;
 	
-	@FindBy(xpath="//*[contains(text(),'Cancel')]//following::button[2]")
+	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]//following::button[2]")
 	WebElement Importbutton;
 	
 	@FindBy(xpath="//*[contains(text(),'Delete Employee')]")
@@ -2434,9 +2434,9 @@ public void ImportEmployees() throws InterruptedException
 {
 	ImportEmployee.click();
 	SelectLayout.click();
-	WebDriverWait wait1 = new WebDriverWait(Driver, 60);
-	wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Template')]")));
-	WebElement Wb1=Driver.findElement(By.xpath("//*[contains(text(),'Template')]"));
+	WebDriverWait wait1 = new WebDriverWait(Driver, 30);
+	wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Template Employee')]")));
+	WebElement Wb1=Driver.findElement(By.xpath("//*[contains(text(),'Template Employee')]"));
 	Actions A1=new Actions(Driver);
 	A1.moveToElement(Wb1).build();
 	A1.click(Wb1).perform();
@@ -2463,8 +2463,8 @@ public void ImportEmployees() throws InterruptedException
 	ImportEmployee.click();
 	SelectLayout.click();
 	WebDriverWait wait2 = new WebDriverWait(Driver, 60);
-	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Template')]")));
-	WebElement Wb2=Driver.findElement(By.xpath("//*[contains(text(),'Template')]"));
+	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Template Employee')]")));
+	WebElement Wb2=Driver.findElement(By.xpath("//*[contains(text(),'Template Employee')]"));
 	Actions A2=new Actions(Driver);
 	A2.moveToElement(Wb2).build();
 	A2.click(Wb2).perform();
@@ -2716,7 +2716,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 		String JT1,String PED1,String PD1,String BR1,String OT1,String DT1,String FR1,String FL2) throws InterruptedException, IOException
 {
 	
-	WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+	WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 	Search.sendKeys(FL);
 	Thread.sleep(2000);
 	Actions Em1=new Actions(Driver);
@@ -2792,6 +2792,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 				 break;
 			 }
 				}
+				
 		//PayRates
 		//PayRate.click();
 		JavascriptExecutor ex = (JavascriptExecutor)Driver;
@@ -2800,27 +2801,27 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 		WebElement On=Driver.findElement(By.xpath("//*[contains(text(),'On Project')]//preceding::input[1]"));
 		JavascriptExecutor Pr1= (JavascriptExecutor)Driver;
 		Pr1.executeScript("arguments[0].click();", On);
-		Thread.sleep(1000);	
 		JavascriptExecutor xe1 = (JavascriptExecutor)Driver;
 		xe1.executeScript("arguments[0].click();", PayRate);
-		Thread.sleep(1000);
-		EmployeeAssignment.click();
 		
+		EmployeeAssignment.click();
 		 List<WebElement> EmpAssign=Driver.findElements(By.xpath("//div[@id='mui-component-select-10019']//following::ul[2]//li"));
 		 System.out.println(EmpAssign.size());
-			for(int l=0;l<=EmpAssign.size()-1;l++)
+			/*for(int l=0;l<=EmpAssign.size()-1;l++)
 			{
 				System.out.println(EmpAssign.get(l).getText());
-			}
+			}*/
 			for(int k=0;k<EmpAssign.size();k++)
 			{
+				Thread.sleep(1000);
 		 if(EmpAssign.get(k).getText().equals(A))
 		 {
+			 System.out.println(A);
 			 EmpAssign.get(k).click();
 			 break;
 		 }
 			}
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			JavascriptExecutor xa = (JavascriptExecutor)Driver;
 			xa.executeScript("arguments[0].click();", AddEntry);
 			//AddEntry.click();
@@ -2864,7 +2865,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 				Confirm.click();
 				JavascriptExecutor xe2 = (JavascriptExecutor)Driver;
 				xe2.executeScript("arguments[0].click();", PayRate);
-				if(Driver.findElement(By.xpath("//*[contains(text(),'Warning')]")).isDisplayed())
+				if(Driver.findElement(By.xpath("//*[contains(text(),'This rate')]")).isDisplayed())
 				{
 					System.out.println("Non-Complaince Alert is seen");
 					WebElement W=Driver.findElement(By.xpath("//*[contains(text(),'This rate')]"));
@@ -2873,7 +2874,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 					if(Ex.equals(S))
 					{
 						System.out.println("Alert message matches");
-						Driver.findElement(By.xpath("//*[contains(text(),'compliance')]//following::button[1]")).click();
+						Driver.findElement(By.xpath("(//*[contains(text(),'compliance')]//following::button[1])[2]")).click();
 					}
 					else
 					{
@@ -2882,7 +2883,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 				}
 				else
 				{
-					System.out.println("Non-Complaince Alert is not seen");
+					System.out.println("Non-Compliance Alert is not seen");
 				}
 				
 					
@@ -2943,7 +2944,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 						System.out.println("Attention:Out of Compliance Employees are not returning correctly");
 					}
 					AssignedToProject.click();
-					Driver.findElement(By.xpath("(//*[contains(text(),'Assigned')])")).click();
+					Driver.findElement(By.xpath("(//*[contains(text(),'Assigned')])[4]")).click();
 					if(Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]")).isDisplayed()) 
 					{
 						System.out.println(FL);
@@ -2958,8 +2959,10 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 					Thread.sleep(2000);
 					AssignedToProject.click();
 					Driver.findElement(By.xpath("(//*[contains(text(),'Show')])")).click();
+					AssignedToProject.click();
+					Driver.findElement(By.xpath("(//*[contains(text(),'Show All')])[3]")).click();
 					Thread.sleep(1000);
-					WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+					WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 					Search1.sendKeys(FL1);
 					Thread.sleep(2000);
 					Actions Em2=new Actions(Driver);

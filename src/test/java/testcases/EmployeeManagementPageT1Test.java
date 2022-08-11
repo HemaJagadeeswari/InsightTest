@@ -194,9 +194,9 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		{
 		     EmployeemanagementpageT1.EmployeeManagementDDNVerification(SL,AT, V, AP, DGE,DE, DC1,ST1,ST2,W,
 		    			L,SU,T);
-			}
+			}*/
 		
-	@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
+	/*@Test(priority=5,description="Employee Management T1 Page:Import Employees Page Image Test")
 		   public void ImportEmployeePageImage() throws IOException, AWTException
 		   {
 			EmployeemanagementpageT1.ImportEmployeesPageImageVerification();
@@ -243,7 +243,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 						String Exp,String FL1,String ET2,String A1,
 						String JT1,String PED1,String PD1,String BR1,String OT1,String DT1,String FR1,String FL2) throws IOException, AWTException, InterruptedException
 			   {
-			    EmployeemanagementpageT1.ImportEditAddEmployee(FL, HD, DDT, ES, AN, UA, SD, ED, ET1, UA, JT, PED, PD, BR, OT, DT, FR, Exp, FL1, ET2, A1, JT1, PED1, PD1, BR1, OT1, DT1, FR1, FL2);
+			    EmployeemanagementpageT1.ImportEditAddEmployee(FL, HD, DDT, ES, AN, UA, SD, ED, ET1, A, JT, PED, PD, BR, OT, DT, FR, Exp, FL1, ET2, A1, JT1, PED1, PD1, BR1, OT1, DT1, FR1, FL2);
 				}
 	   /*@DataProvider(name="getImportPageData")
 		public Object[][] getTestDataBaseline3(Method m)
