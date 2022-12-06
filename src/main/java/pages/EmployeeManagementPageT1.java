@@ -33,6 +33,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -51,14 +52,49 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Employee Management')])[1]")
 	WebElement EmployeeManagement;
 
-	@FindBy(xpath="//*[contains(text(),'Employees')]")
+	@FindBy(xpath="(//*[contains(text(),'Employees')])[5]")
 	WebElement EmployeesTab;
 	
-	@FindBy(xpath="//*[contains(text(),'Add Employee')]")
+	
+	@FindBy(xpath="(//*[contains(text(),'Employees')])[1]")
+	WebElement Employees;
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])[2]")
+	WebElement ViewAllEmployees;
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])")
+	WebElement ViewAllEmployeesLeftNav;
+	
+	@FindBy(xpath="(//*[contains(text(),'Add Employee')])[2]")
 	WebElement AddEmployee;
 	
-	@FindBy(xpath="//*[contains(text(),'Import Employee')]")
+	@FindBy(xpath="(//*[contains(text(),'Add Employee')])[1]")
+	WebElement AddEmployeeLeftNav;
+	
+	@FindBy(xpath="(//*[contains(text(),'1099')])[1]//preceding::div[1]")
+	WebElement ImportEmployeesLeftNav;
+	
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])[1]")
+	WebElement EmployeesTitle;
+	
+	@FindBy(xpath="(//*[contains(text(),'Add/Edit')])[1]")
+	WebElement AddEmployeeTitle;
+	
+	@FindBy(xpath="//*[contains(text(),'Import Employees')][1]")
+	WebElement ImportEmployeesTitle;
+	
+	@FindBy(xpath="(//*[contains(text(),'Import Employees')])[2]")
 	WebElement ImportEmployee;
+	
+	@FindBy(xpath="//*[contains(text(),'Undo')]")
+	WebElement UndoChanges;
+	
+	@FindBy(xpath="//*[contains(text(),'Setup')]")
+	WebElement Setup;
+	
+	@FindBy(xpath="//*[contains(text(),'Manage Project')]")
+	WebElement ManageProject;
 	
 	@FindBy(xpath="//*[contains(text(),'Attention')]//following::select[1]")
 	WebElement AttentionSelect;
@@ -100,7 +136,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(id="phone")
 	WebElement Phone;
 	
-	@FindBy(xpath="//*[contains(text(),'Address History')]")
+	@FindBy(xpath="(//*[contains(text(),'Address History')])[1]")
 	WebElement AddressHistory;
 	
 	@FindBy(xpath="//*[contains(text(),'Add New')]")
@@ -143,7 +179,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Update')])")
 	WebElement AddressUpdate;
 	
-	@FindBy(xpath="//*[contains(text(),'Work Info')]")
+	@FindBy(xpath="(//*[contains(text(),'Work Info')])[1]")
 	WebElement WorkInfo;
 	
 	@FindBy(xpath="(//input[@placeholder='mm/dd/yyyy'])[1]")
@@ -353,10 +389,10 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]")
 	WebElement Cancel;
 	
-	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]//following::button[1]")
+	@FindBy(xpath="//*[contains(text(),'Test Import')]")
 	WebElement TestImportbutton;
 	
-	@FindBy(xpath="(//*[contains(text(),'Cancel')])[3]//following::button[2]")
+	@FindBy(xpath="(//*[contains(text(),'Test Import')])//following::button[1]")
 	WebElement Importbutton;
 	
 	@FindBy(xpath="//*[contains(text(),'Delete Employee')]")
@@ -370,12 +406,30 @@ public class EmployeeManagementPageT1 extends TestBase{
 	
 	@FindBy(xpath="//*[contains(text(),'Payroll Entry')]")
 	WebElement PayrollEntry;
-		
+	
 	public EmployeeManagementPageT1()
 	{
 		PageFactory.initElements(Driver,this);
 	}
 	
+	public String ValidateViewAllEmployeesLeftNav()
+	{
+		return ViewAllEmployeesLeftNav.getText();
+	}
+	
+	public String ValidateAddEmployeeLeftNav()
+	{
+		return AddEmployeeLeftNav.getText();
+	}
+	
+	public String ValidateImportEmployeeleftNav() throws InterruptedException
+	{
+         Thread.sleep(1000);
+	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", ImportEmployeesLeftNav);
+	      System.out.println(ImportEmployeesLeftNav.getText());
+		return ImportEmployeesLeftNav.getText();
+	}
+		
 	public String ValidateEmployeesTab()
 	{
 		return EmployeesTab.getText();
@@ -392,7 +446,33 @@ public class EmployeeManagementPageT1 extends TestBase{
 	}
 	
 	
-
+	
+	//title verification
+	public String ValidateEmployeesPageTitleName() throws InterruptedException
+	{
+		String S=Driver.findElement(By.xpath("(//*[contains(text(),'View All Employees')])[1]")).getText();
+		return S;
+	}
+	
+	public String ValidateAddEmployeePageTitleName() throws InterruptedException
+	{
+		AddEmployee.click();
+	    String t2= Driver.getTitle();
+		return t2;
+	}
+	
+	public String ValidateImportEmployeesPageTitleName() throws InterruptedException
+	{
+          AddEmployee.click();
+	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", ImportEmployeesLeftNav);
+		ImportEmployeesLeftNav.click();
+		Thread.sleep(1000);
+		String t3= Driver.getTitle();
+		return t3;
+	}
+	
+	
+	
 	public  void ValidateEmployeeManagementImageVerification() throws AWTException, InterruptedException, IOException
 	{
 		
@@ -456,7 +536,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 		
 		BufferedImage expectedImageC1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\EmployeeView2.png."));
 
-		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Cancel')]"));
+		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Save')]"));
 		
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
@@ -583,26 +663,49 @@ public class EmployeeManagementPageT1 extends TestBase{
 		
 		AddEmployee.click();
 		PayRate.click();
+		BufferedImage expectedImageC = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\PayRates.png."));
+
+		
+		Screenshot ImageScreenshotC= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
+
+		//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
+		Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+		ImageIO.write(ImageScreenshotC.getImage(), "png",
+				new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\PayRates.png."));
+		BufferedImage actualImageC = ImageScreenshotC.getImage();
+
+
+		ImageDiffer imgdifferD = new ImageDiffer();
+
+	 ImageDiff imgdiffD = imgdifferD.makeDiff(expectedImageC, actualImageC);
+	if(imgdiffD.hasDiff()==true)
+	{
+		System.out.println("Add Employee-Pay Rates: Images are not same");
+	}
+	else
+	{
+		System.out.println("Add Employee-Pay Rates: Images are same");
+	}
 		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Row')]"));
 		
 	      // Javascript executor
 	      ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
-		BufferedImage expectedImageC = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\PayRates.png."));
+		BufferedImage expectedImageC1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\PayRates1.png."));
 
 		
-				Screenshot ImageScreenshotC= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
+				Screenshot ImageScreenshotC1= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
 				//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 				Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
-				ImageIO.write(ImageScreenshotC.getImage(), "png",
-						new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\PayRates.png."));
-				BufferedImage actualImageC = ImageScreenshotC.getImage();
+				ImageIO.write(ImageScreenshotC1.getImage(), "png",
+						new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\PayRates1.png."));
+				BufferedImage actualImageC1 = ImageScreenshotC1.getImage();
 
 
-				ImageDiffer imgdifferD = new ImageDiffer();
+				ImageDiffer imgdifferD1 = new ImageDiffer();
 
-			   ImageDiff imgdiffD = imgdifferD.makeDiff(expectedImageC, actualImageC);
-			if(imgdiffD.hasDiff()==true)
+			  ImageDiff imgdiffD1 = imgdifferD1.makeDiff(expectedImageC1, actualImageC1);
+			if(imgdiffD1.hasDiff()==true)
 			{
 				System.out.println("Add Employee-Pay Rates: Images are not same");
 			}
@@ -709,68 +812,33 @@ public class EmployeeManagementPageT1 extends TestBase{
 			}
 	}
 	
-	
-	public void ValidateCancelbutton() throws InterruptedException, AWTException
+	//New Navigation change-IN 4911
+	public void ValidateUndobutton() throws InterruptedException, AWTException
 	{
 		Thread.sleep(5000);
 		WebDriverWait w1 = new WebDriverWait(Driver, 100);
-		w1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'+ Add Employee')]")));
-		AddEmployee.click();
-		//Cancel without entering any value
-		Cancel.click();
-		if(Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]")).isDisplayed())
-				{
-			System.out.println("Employee Management Page got loaded");
-				}
-		else
-		{
-			System.out.println("Employee Management Page is not loaded");
-		}
+		w1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[contains(text(),'Add Employee')])[2]")));
 		AddEmployee.click();
 		FirstName.click();
+		Thread.sleep(1000);
 		FirstName.sendKeys("Anish");
-		Cancel.click();
-		if(Driver.findElement(By.xpath("//*[contains(text(),'Are you sure')]")).isDisplayed())
+		UndoChanges.click();
+		if(Driver.getPageSource().contains("Anish"))
 {
-	String M="You have unsaved changes. Are you sure you want to proceed without saving?";
-	WebElement Message=Driver.findElement(By.xpath("//*[contains(text(),'You have')]"));
-	if(Message.getText().equals(M))
-	{
-		System.out.println("Alert message is matching.");
+		System.out.println("Entered value is not cleared");
 	}
 	else
 	{
-		System.out.println("Alert message is not matching.");
+		System.out.println("Entered value is cleared");
 	}
-	Driver.findElement(By.xpath("//*[contains(text(),'You have')]//following::button[1]")).click();
-	if(Driver.findElement(By.xpath("(//*[contains(text(),'Employee Information')])")).isDisplayed())
-	{
-     System.out.println("Employee view is seen.");
-	}
-   else
-   {
-    System.out.println("Came out of Employee View");
-   }
-	Cancel.click();
-	Driver.findElement(By.xpath("//*[contains(text(),'You have')]//following::button[2]")).click();
-	if(Driver.findElement(By.xpath("(//*[contains(text(),'Employee Management')])[2]")).isDisplayed())
-	{
-     System.out.println("Employee Management Page got loaded");
-	}
-   else
-   {
-    System.out.println("Employee Management Page is not loaded");
-   }
-	
-}
-		else
-		{
-			System.out.println("Are you sure pop up is not seen.");
-		}
-		AddEmployee.click();
+		//AddEmployee.click();
 		GenderId.click();
 		Driver.findElement(By.xpath("//*[contains(text(),'Female')]")).click();
-		DetailsPage.click();
+		WebElement S1=Driver.findElement(By.xpath("//*[contains(text(),'Manage Project')]"));
+	    // Javascript executor
+	  ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S1);
+		ManageProject.click();
+		Setup.click();
 		Robot robot = new Robot();
 
 		robot.keyPress(KeyEvent.VK_ENTER);
@@ -787,31 +855,48 @@ public class EmployeeManagementPageT1 extends TestBase{
 			   {
 			    System.out.println("Required field alert not matches");
 			   }
-		
-		
-		WebDriverWait wait = new WebDriverWait(Driver, 40);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Employee Management')]")));
-			EmployeeManagement.click();
-			Thread.sleep(1000);
-			AddEmployee.click();
+		JavascriptExecutor exe2 = (JavascriptExecutor)Driver;
+		exe2.executeScript("arguments[0].click();", AddEmployeeLeftNav);
+			//AddEmployeeLeftNav.click();
 			FirstName.click();
 			FirstName.sendKeys("Anish");
-			DetailsPage.click();
+			WebElement S2=Driver.findElement(By.xpath("//*[contains(text(),'Manage Project')]"));
+		    // Javascript executor
+		  ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S2);
+			Setup.click();
 			robot.keyPress(KeyEvent.VK_TAB);
 			robot.keyRelease(KeyEvent.VK_TAB);
 
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
 			Thread.sleep(2000);
-			if(Driver.findElement(By.xpath("//*[contains(text(),'Project Overview')]")).isDisplayed())
+			if(Driver.findElement(By.xpath("(//*[contains(text(),'Project Details')])[2]")).isDisplayed())
 			{
-				System.out.println("Details page got loaded");
+				System.out.println("Project Details page got loaded");
 			}
 			else
 			{
-				System.out.println("Details page is not loaded");
+				System.out.println("Project Details page is not loaded");
 			}
-		
+		Driver.navigate().back();
+		if(Driver.findElement(By.xpath("(//*[contains(text(),'Employee Mgmt')])[2]")).isDisplayed())
+		{
+			System.out.println("Add/Edit Employee view got loaded");
+		}
+		else
+		{
+			System.out.println("Add/Edit Employee view is not loaded");
+	}
+		Thread.sleep(1000);
+		Driver.navigate().forward();
+		if(Driver.findElement(By.xpath("(//*[contains(text(),'Project Details')])[2]")).isDisplayed())
+		{
+			System.out.println("Project Details page got loaded");
+		}
+		else
+		{
+			System.out.println("Project Details page is not loaded");
+		}
 	}
 	
 	public void AddEmployee(String fn,String Mi, String Ln,String S,String Ed, String GE,String ET,String Ph,
@@ -821,7 +906,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			String BR1,String OT1,String DT1,String FR1,String Exp,String Exp1) throws InterruptedException, IOException {
       Thread.sleep(9000);
 		WebDriverWait wait = new WebDriverWait(Driver, 110);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'+ Add Employee')]")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Add Employee')]")));
 		AddEmployee.click();
 		
 		//Verifying Duplicate Message
@@ -841,6 +926,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 		JavascriptExecutor exe6 = (JavascriptExecutor)Driver;
 		exe6.executeScript("arguments[0].click();", EmployeeId);
 		EmployeeId.sendKeys(Ed);
+		//EmployeeId.sendKeys(Keys.TAB);
 		Phone.click();
 		if(Driver.getPageSource().contains("Warning: duplicate found")){
 			System.out.println("Employee is duplicate");
@@ -868,8 +954,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 	{
 		System.out.println("Images are same");
 	}
-		Cancel.click();
-		Driver.findElement(By.xpath("(//*[contains(text(),'Are you')])[1]//following::button[2]")).click();
+		UndoChanges.click();
 		AccountIcon.click();
 		Logout.click();
 		}
@@ -878,6 +963,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			System.out.println("Employee is not duplicate");
 			
 //Verifying the Existing Employee
+			Thread.sleep(1000);
 			if(Driver.getPageSource().contains("located")){
 				System.out.println("Employee Already Exist");	
 			WebElement Transition1=Driver.findElement(By.xpath("//*[contains(text(),'We have located')]"));
@@ -887,7 +973,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 				if(St1.equals(UI))
 				{
 					System.out.println("Soft Alert Matches");
-					Thread.sleep(2000);
+					Thread.sleep(3000);
 					WebDriverWait t=new WebDriverWait(Driver, 40);
 					WebElement ele1 = Driver.findElement(By.xpath("//div[@id='mui-component-select-genderId']"));
 					t.until(ExpectedConditions.elementToBeClickable(ele1));
@@ -918,7 +1004,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 							System.out.println(E.get(i).getText());
 					 if(E.get(i).getText().equals(ET))
 					 {
-						 E.get(i).click();
+				 		 E.get(i).click();
 						break;
 						 }
 						}
@@ -1050,8 +1136,6 @@ public class EmployeeManagementPageT1 extends TestBase{
 									ValidationConfirm.click();
 									JavascriptExecutor te1 = (JavascriptExecutor)Driver;
 									te1.executeScript("arguments[0].click();", Save);
-									JavascriptExecutor exe3 = (JavascriptExecutor)Driver;
-									exe3.executeScript("arguments[0].click();", SaveandClose);
 					//System.out.println(UI);
 				}
 			}
@@ -1522,8 +1606,6 @@ public class EmployeeManagementPageT1 extends TestBase{
 			    	Thread.sleep(3000);
 					JavascriptExecutor te2 = (JavascriptExecutor)Driver;
 					te2.executeScript("arguments[0].click();", Save);
-					JavascriptExecutor exe3 = (JavascriptExecutor)Driver;
-					exe3.executeScript("arguments[0].click();", SaveandClose);
 					
 				}
 		}
@@ -1533,7 +1615,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			String SS1,String SS2, String SC,String SCO, String SS, String SZ, String SE) throws InterruptedException
 	{
 		
-		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 		Search.sendKeys(FL);
 		Actions Em1=new Actions(Driver);
 		WebElement Emp1=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]"));
@@ -1718,7 +1800,7 @@ public class EmployeeManagementPageT1 extends TestBase{
 			String Exp,String FND ) throws InterruptedException, IOException
 	{
 		
-		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+		WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 		Search.sendKeys(FL);
 		Thread.sleep(2000);
 		Actions Em1=new Actions(Driver);
@@ -1880,13 +1962,12 @@ public class EmployeeManagementPageT1 extends TestBase{
 						ValidationConfirm.click();
 						WebDriverWait i = new WebDriverWait(Driver, 60);
 						i.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[contains(text(),'Save')])[1]")));
+						Save.click();
 				    	Thread.sleep(3000);
-						JavascriptExecutor te1 = (JavascriptExecutor)Driver;
-						te1.executeScript("arguments[0].click();", SaveandClose);
-						Thread.sleep(2000);
+				    	Driver.findElement(By.xpath("(//*[contains(text(),'Employees')])[4]")).click();
 						WebDriverWait wai = new WebDriverWait(Driver, 60);
 						wai.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()[contains(.,'"+FND+"')]]")));
-						WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
+						WebElement Search1=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 						Search1.sendKeys(FND);
 						Actions Em2=new Actions(Driver);
 						WebElement Emp2=Driver.findElement(By.xpath("//*[text()[contains(.,'"+FND+"')]]"));
@@ -1901,7 +1982,23 @@ public void EmployeeManagementDDNVerification(String SL,String AT, String V, Str
 	
 	Thread.sleep(9000);
 	Driver.findElement(By.xpath("//*[contains(text(),'Attention')]//following::select[1]")).click();
-	WebElement AttentionDropDown = Driver.findElement(By.xpath("//*[contains(text(),'Attention')]//following::select[1]"));  
+	Driver.findElement(By.xpath("//*[contains(text(),'Out of Compliance')]")).click();
+	Driver.navigate().back();
+	Thread.sleep(1000);
+	Driver.navigate().forward();
+	String At="Show All";
+	String AA=Driver.findElement(By.xpath("//*[contains(text(),'Attention')]//following::select[1]//Option[1]")).getText();
+	System.out.println(AA);
+	if(AA.equals(At))
+	{
+		System.out.println("Default value is seen.");
+	}
+	else
+	{
+		System.out.println("Previously selected value is persisting");
+	}
+	Driver.findElement(By.xpath("//*[contains(text(),'Attention')]//following::select[1]")).click();
+		WebElement AttentionDropDown = Driver.findElement(By.xpath("//*[contains(text(),'Attention')]//following::select[1]"));  
 	Select dropdown = new Select(AttentionDropDown); 
 	String[] r = AT.split("!"); 
 	int co =0;
@@ -2031,6 +2128,9 @@ for(String A:VA)
 	WebElement ele1 = Driver.findElement(By.xpath("//div[@id='mui-component-select-genderId']"));
 	t.until(ExpectedConditions.elementToBeClickable(ele1));
 	ele1.click();
+
+
+	
 		Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
 	List<WebElement> GE= Driver.findElements(By.xpath("//div[@id='mui-component-select-genderId']//following::ul[2]//li"));
 	System.out.println(GE.size());
@@ -2336,6 +2436,7 @@ Thread.sleep(1000);
 	 Actions Di = new Actions(Driver);
 		Di.sendKeys(Keys.ESCAPE).build().perform();
 	Thread.sleep(1000);
+	DeleteIcon.click();
 	 CustomField.click();
 		EmployeeType.click();
 		 List<WebElement> ET1=Driver.findElements(By.xpath("//div[@id='mui-component-select-10011']//following::ul[2]//li"));
@@ -2442,34 +2543,6 @@ public void ImportEmployees() throws InterruptedException
 	A1.click(Wb1).perform();
 	String ImportFile="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\skillsmart-employee-template.xlsx";
 	Drophere.click();
-	try {
-		Robot robot = new Robot();
-		StringSelection Selection = new StringSelection(ImportFile);
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Selection, null);
-			robot.setAutoDelay(2000);                                                                                
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_V);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_V);
-			robot.keyPress(KeyEvent.VK_ENTER);
-			robot.keyRelease(KeyEvent.VK_ENTER);		
-			
-		} catch (AWTException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-	}
-	Cancel.click();
-	Thread.sleep(2000);
-	ImportEmployee.click();
-	SelectLayout.click();
-	WebDriverWait wait2 = new WebDriverWait(Driver, 60);
-	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Template Employee')]")));
-	WebElement Wb2=Driver.findElement(By.xpath("//*[contains(text(),'Template Employee')]"));
-	Actions A2=new Actions(Driver);
-	A2.moveToElement(Wb2).build();
-	A2.click(Wb2).perform();
-	Drophere.click();
-
 	try {
 		Robot robot = new Robot();
 		StringSelection Selection = new StringSelection(ImportFile);
@@ -2710,12 +2783,12 @@ public void ValidateImportedEmployee(String FN,String Mi, String Ln,String S,Str
 
 
 public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,String AN,
-		String UA,String SD,String ED,String ET1, String A,
+		String ET1, String A,
 		String JT,String PED,String PD,String BR,String OT,String DT,String FR,
 		String Exp,String FL1,String ET2,String A1,
 		String JT1,String PED1,String PD1,String BR1,String OT1,String DT1,String FR1,String FL2) throws InterruptedException, IOException
 {
-	
+	//String UA,String SD,String ED
 	WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[2]"));
 	Search.sendKeys(FL);
 	Thread.sleep(2000);
@@ -2755,7 +2828,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 			ApprenticeNumber.sendKeys(AN);
 		//Union
 		Union.click();
-		AddMembershipbutton.click();
+		/*AddMembershipbutton.click();
 		Thread.sleep(1000);
 		SelectUnion.click();
 		 List<WebElement> U=Driver.findElements(By.xpath("//*[contains(text(),'Select a Union')]//following::ul[2]//li"));
@@ -2774,7 +2847,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 			Thread.sleep(1000);
 			EndDate.click();
 			EndDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			EndDate.sendKeys(ED);
+			EndDate.sendKeys(ED);*/
 			Thread.sleep(1000);
 			CustomField.click();
 			EmployeeType.click();
@@ -2862,7 +2935,10 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 				FringeRate.click();
 				FringeRate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 				FringeRate.sendKeys(FR);
-				Confirm.click();
+				Thread.sleep(1000);
+				JavascriptExecutor n1 = (JavascriptExecutor)Driver;
+				n1.executeScript("arguments[0].click();", Confirm);
+				//Confirm.click();
 				JavascriptExecutor xe2 = (JavascriptExecutor)Driver;
 				xe2.executeScript("arguments[0].click();", PayRate);
 				if(Driver.findElement(By.xpath("//*[contains(text(),'This rate')]")).isDisplayed())
@@ -2874,7 +2950,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 					if(Ex.equals(S))
 					{
 						System.out.println("Alert message matches");
-						Driver.findElement(By.xpath("(//*[contains(text(),'compliance')]//following::button[1])[2]")).click();
+						Driver.findElement(By.xpath("(//*[contains(text(),'compliance')]//following::button[1])")).click();
 					}
 					else
 					{
@@ -2923,11 +2999,9 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 					i1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[contains(text(),'Save')])[1]")));
 			    	Thread.sleep(3000);
 			    	JavascriptExecutor te1 = (JavascriptExecutor)Driver;
-					te1.executeScript("arguments[0].click();", SaveandClose);
+					te1.executeScript("arguments[0].click();", Save);
 					Thread.sleep(3000);
-					
-					
-					
+					ViewAllEmployees.click();
 					//Non Compliance Verification
 					JavascriptExecutor ten2 = (JavascriptExecutor)Driver;
 					ten2.executeScript("arguments[0].click();", AttentionSelect);
@@ -2944,7 +3018,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 						System.out.println("Attention:Out of Compliance Employees are not returning correctly");
 					}
 					AssignedToProject.click();
-					Driver.findElement(By.xpath("(//*[contains(text(),'Assigned')])[4]")).click();
+					Driver.findElement(By.xpath("(//*[contains(text(),'Assigned')])[2]")).click();
 					if(Driver.findElement(By.xpath("//*[text()[contains(.,'"+FL+"')]]")).isDisplayed()) 
 					{
 						System.out.println(FL);
@@ -2997,8 +3071,7 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 					
 						//PayRates
 						//PayRate.click();
-						JavascriptExecutor ex3 = (JavascriptExecutor)Driver;
-						ex3.executeScript("arguments[0].click();", PayRate);
+					
 						EmployeeAssignment.click();
 						 List<WebElement> EmpAssign1=Driver.findElements(By.xpath("//div[@id='mui-component-select-10019']//following::ul[2]//li"));
 						 System.out.println(EmpAssign1.size());
@@ -3056,9 +3129,9 @@ public void ImportEditAddEmployee(String FL,String HD,String DDT,String ES,Strin
 								JavascriptExecutor xe4 = (JavascriptExecutor)Driver;
 								xe4.executeScript("arguments[0].click();", PayRate);
 								JavascriptExecutor te2 = (JavascriptExecutor)Driver;
-								te2.executeScript("arguments[0].click();", SaveandClose);
+								te2.executeScript("arguments[0].click();", Save);
 								//Deleting an Employee
-								
+								ViewAllEmployees.click();
 					WebDriverWait wai = new WebDriverWait(Driver, 60);
 					wai.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()[contains(.,'"+FL2+"')]]")));
 					WebElement Search3=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[1]//following::input[1]"));
@@ -3382,7 +3455,7 @@ public PayrollEntryPageT1 PElaunch() throws InterruptedException {
 	return new PayrollEntryPageT1();
 }
 
-}
+
 
 /*	public String pdfcompare()throws IOException
 	{
@@ -3401,11 +3474,11 @@ public PayrollEntryPageT1 PElaunch() throws InterruptedException {
 	//PDF Box
 	/*File file=new File("C:\\Users\\prince\\Downloads\\Do\\File1.pdf");
 	FileInputStream fis=new FileInputStream(file);
-	PDDocument document=null;
+	PDDocument document=null;										
 	document=PDDocument.load(fis);
 	String Data=new PDFTextStripper().getText(document);
 	System.out.println(Data);
-	return Data;*/
+	return Data;
 	
 /*JavascriptExecutor ex = (JavascriptExecutor)Driver;
 	ex.executeScript("arguments[0].click();", ReportDownload);
@@ -3415,3 +3488,135 @@ Driver.findElement(By.xpath("//*[contains(text(),'Excel')]")).click();*/
 
 /*	}
 	}*/
+public void ImportEmployeeValidation() throws IOException, InterruptedException
+{
+	ImportEmployee.click();
+	SelectLayout.click();
+	WebDriverWait wait1 = new WebDriverWait(Driver, 30);
+	wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Validation Check')]")));
+	WebElement Wb1=Driver.findElement(By.xpath("//*[contains(text(),'Validation Check')]"));
+	Actions A1=new Actions(Driver);
+	A1.moveToElement(Wb1).build();
+	A1.click(Wb1).perform();
+	String ImportFile="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\skillsmart-employee-template_Empty.xlsx";
+	Drophere.click();
+	try {
+		Robot robot = new Robot();
+		StringSelection Selection = new StringSelection(ImportFile);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Selection, null);
+			robot.setAutoDelay(2000);                                                                                
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);		
+			
+		} catch (AWTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+	}	
+	Actions A=new Actions(Driver);
+	A.moveToElement(TestImportbutton).build();
+	A.click(TestImportbutton).perform();
+	String Sa1=Driver.findElement(By.xpath("//*[contains(text(),'No import')]")).getText();
+	String E1="No import conflicts, click the import button to the right to proceed.";
+	if(Sa1.equals(E1))
+			{
+		System.out.println("Validation message is matching");
+			}
+	else
+	{
+		System.out.println("Validation message is matching");
+	}
+/*	BufferedImage expectedImageC = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\ImportValidationEmpty.png."));
+	
+	WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'proceed')]"));
+    // Javascript executor
+  ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
+	
+
+
+	Screenshot Screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
+
+	//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
+	Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	ImageIO.write(Screenshot.getImage(), "png",
+			new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\ImportValidationEmpty.png."));
+	BufferedImage actualImageC = Screenshot.getImage();
+	ImageDiffer imgdifferD = new ImageDiffer();
+
+  ImageDiff imgdiffD = imgdifferD.makeDiff(expectedImageC, actualImageC);
+if(imgdiffD.hasDiff()==true)
+{
+	System.out.println("Import Employees: Import Empty File images are not same");
+}
+else
+{
+	System.out.println("Employee Management:Import Empty File images are same");
+}*/
+	Importbutton.click();
+	String Sa=Driver.findElement(By.xpath("//*[contains(text(),'Saved')]")).getText();
+	String E="Saved - Located 0 records, added 0";
+	if(Sa.equals(E))
+			{
+		System.out.println("Transition message is matching");
+			}
+	else
+	{
+		System.out.println("Transition message is matching");
+	}
+	Thread.sleep(1000);
+	ImportEmployee.click();
+	SelectLayout.click();
+	WebDriverWait wait2 = new WebDriverWait(Driver, 30);
+	wait2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Validation Check')]")));
+	WebElement Wb2=Driver.findElement(By.xpath("//*[contains(text(),'Validation Check')]"));
+	Actions A2=new Actions(Driver);
+	A2.moveToElement(Wb2).build();
+	A2.click(Wb2).perform();
+	String ImportFile1="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\skillsmart-employee-template_Validation.xlsx";
+	Drophere.click();
+	try {
+		Robot robot = new Robot();
+		StringSelection Selection = new StringSelection(ImportFile1);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(Selection, null);
+			robot.setAutoDelay(2000);                                                                                
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);		
+			
+		} catch (AWTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+	}	
+	Actions AI2=new Actions(Driver);
+	AI2.moveToElement(TestImportbutton).build();
+	AI2.click(TestImportbutton).perform();
+	BufferedImage expectedImageC1 = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\ImportValidation.png."));
+	WebElement S1=Driver.findElement(By.xpath("//*[contains(text(),'validation')]"));
+    // Javascript executor
+  ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S1);
+	Screenshot Screenshot1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
+	//Driver.manage().timeouts().implicitlyWait(TestUtil.Implicit_Time,TimeUnit.SECONDS);
+	Driver.manage().timeouts().implicitlyWait(50,TimeUnit.SECONDS);
+	ImageIO.write(Screenshot1.getImage(), "png",
+			new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\UI Image\\ImportValidation.png."));
+	BufferedImage actualImageC1 = Screenshot1.getImage();
+	ImageDiffer imgdiffer= new ImageDiffer();
+
+   ImageDiff imgdiff = imgdiffer.makeDiff(expectedImageC1, actualImageC1);
+if(imgdiff.hasDiff()==true)
+{
+	System.out.println("Import Employee: Validation File Images are not same");
+}
+else
+{
+	System.out.println("Import Employee: Validation File Images are same");
+}
+	}
+	
+}

@@ -73,8 +73,17 @@ public class DashboardPageT1 extends TestBase{
 	@FindBy(xpath="//*[contains(text(),'* Data is retrieved')]")
 	WebElement DefaultMessage;
 	
-	@FindBy(xpath="//*[contains(text(),'Details')]")
-	WebElement DetailspageLaunch;
+	@FindBy(xpath="//*[contains(text(),'Setup')]")
+	WebElement Setup;
+	
+	@FindBy(xpath="//*[contains(text(),'Manage Project')]")
+	WebElement ManageProject;
+	
+	@FindBy(xpath="(//*[contains(text(),'Employees')])[1]")
+	WebElement Employees;
+
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])")
+	WebElement ViewAllEmployees;
 	
 	public DashboardPageT1()
 	{
@@ -199,12 +208,7 @@ public class DashboardPageT1 extends TestBase{
 		return Section10.getText();
 	}
 	
-	public DetailsPageT1 DetailsPageLaunch()
-	{
-		 DetailspageLaunch.click();
-		 return new DetailsPageT1();
-		 
-	}
+	
 
 	public String ValidateDefaultMessage() {
 
@@ -258,5 +262,21 @@ public class DashboardPageT1 extends TestBase{
         	}
  		}
 	}
-
+	public EmployeeManagementPageT1 EMLaunch() throws InterruptedException
+	{
+		/*Thread.sleep(2000);
+		WebElement S=Driver.findElement(By.xpath("//*[contains(text(),'Manage Project')]"));
+	    // Javascript executor
+	  ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", S);
+		 ManageProject.click();
+		 Setup.click();
+		 return new DetailsPageT1();*/
+		Thread.sleep(2000);
+		JavascriptExecutor exe1 = (JavascriptExecutor)Driver;
+		exe1.executeScript("arguments[0].click();", Employees);
+		//Employees.click();
+		ViewAllEmployees.click();
+		return new EmployeeManagementPageT1();
+		 
+	}
 }

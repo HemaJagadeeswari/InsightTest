@@ -155,10 +155,13 @@ public class DetailsPageT1 extends TestBase
 	@FindBy(xpath="//*[contains(text(),'Labor Standard')]")
 	WebElement LaborStandard;
 	
-	@FindBy(xpath="(//*[contains(text(),'Employee Management')])[1]")
-	WebElement EmployeeManagement;
+	@FindBy(xpath="(//*[contains(text(),'Employees')])[1]")
+	WebElement Employees;
 
-
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])")
+	WebElement ViewAllEmployees;
+	
+	
 	
 		public DetailsPageT1()
 	{
@@ -932,7 +935,8 @@ public class DetailsPageT1 extends TestBase
 
 	public EmployeeManagementPageT1 EMlaunch() {
 		// TODO Auto-generated method stub
-		EmployeeManagement.click();
+		Employees.click();
+		ViewAllEmployees.click();
 		return new EmployeeManagementPageT1();
 	}
 }

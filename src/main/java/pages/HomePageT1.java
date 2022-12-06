@@ -71,13 +71,13 @@ public class HomePageT1 extends TestBase{
     	return Section.getText();
     }
     
-    public SetupPageT1 PageView() throws InterruptedException
+    public DashboardPageT1 PageView() throws InterruptedException
     {
     	Thread.sleep(2000);
     	WebDriverWait wait = new WebDriverWait(Driver, 80);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Prev. Wage Project -')]//following::button[1]")));
     Project.click();
    // Dashboard.click();
-		return new SetupPageT1();
+		return new DashboardPageT1();
 		    }
 }  
