@@ -14,6 +14,7 @@ import pages.DashboardPage;
 import pages.DashboardPageT1;
 import pages.DetailsPage;
 import pages.DetailsPageT1;
+import pages.EmployeeManagementPageT1;
 import pages.HomePage;
 import pages.HomePageT1;	
 import pages.LoginPage;
@@ -27,6 +28,7 @@ public class DashboardPageT1Test extends TestBase{
 	LoginPageT1 LoginpageT1;
 	DetailsPageT1 DetailspageT1;
 	SetupPageT1 SetuppageT1;
+	EmployeeManagementPageT1 EmployeemanagementppageT1;
 	
 	public DashboardPageT1Test()
 	{
@@ -38,9 +40,9 @@ public class DashboardPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
+		//SetuppageT1=homepageT1.PageView();
 		Thread.sleep(2000);
-		DashboardpageT1=SetuppageT1.PageView1();
+		DashboardpageT1=homepageT1.PageView();
 		}
 	
 	@Test(priority=0,description="Dashboard Page T1:Project Name Value Test")
@@ -156,9 +158,9 @@ public class DashboardPageT1Test extends TestBase{
 	}
 	
 	//@Test(priority=14, description="Dashboard Page T1: Details Page Selection Test")
-	public void DetailsPageSelection()
+	public void EmployeeManagementPagechange() throws InterruptedException
 	{
-	DetailspageT1=DashboardpageT1.DetailsPageLaunch();
+		EmployeemanagementppageT1=DashboardpageT1.EMLaunch();
 }
 
 	@AfterMethod

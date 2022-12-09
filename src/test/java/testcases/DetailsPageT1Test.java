@@ -41,10 +41,10 @@ public class DetailsPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
+		//SetuppageT1=homepageT1.PageView();
 		Thread.sleep(2000);
 		DashboardpageT1=SetuppageT1.PageView1();
-		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
+		//DetailspageT1=DashboardpageT1.DetailsPageLaunch();
 		}
 	
 /*	@Test(priority=0,description="Details Page T1: Project Name Value Test")
@@ -144,7 +144,7 @@ public class DetailsPageT1Test extends TestBase{
 			String City=DetailspageT1.ValidateCorporateAddresscity();
 			Assert.assertEquals(City,"Kitchener","City is not matching");
 			}*/
-		@Test(priority=15,description="Details Page T1: Corporate Address Country Value Test")
+		/*@Test(priority=15,description="Details Page T1: Corporate Address Country Value Test")
 		public void CorporateAddressCountry()
 		{
 			String Country=DetailspageT1.ValidateCorporateAddressCountry();
@@ -336,7 +336,7 @@ public void DetailsPageT1DropdownVerification(String ET,String G,String C1,Strin
 		String AT,String PS,String PD) {
 	
 	DetailspageT1.DetailsPageDDNVerification(ET,G,C1,C2,AT,PS,PD);
-	}
+	}*/
 
 @Test(priority=41,description="Details Page T1: Employee Management Page Launch")
 public void EmployeeManagementPage() {
