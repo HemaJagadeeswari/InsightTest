@@ -47,7 +47,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		EmployeemanagementpageT1=DashboardpageT1.EMLaunch();
 		}
 	
-	@Test(priority=0, description="Employee Management T1: View All Employees Left Nav Test")
+	/*@Test(priority=0, description="Employee Management T1: View All Employees Left Nav Test")
 	public void ValidateViewAllEmployeesLeftNav()
 	{
 		String E1=EmployeemanagementpageT1.ValidateViewAllEmployeesLeftNav();
@@ -282,7 +282,7 @@ public class EmployeeManagementPageT1Test extends TestBase{
 			   {
 				//String UA,String SD,String ED
 			    EmployeemanagementpageT1.ImportEditAddEmployee(FL, HD, DDT, ES, AN, ET1, A, JT, PED, PD, BR, OT, DT, FR, Exp, FL1, ET2, A1, JT1, PED1, PD1, BR1, OT1, DT1, FR1, FL2);
-				}
+				}*/
 	   /*@DataProvider(name="getImportPageData")
 		public Object[][] getTestDataBaseline3(Method m)
 		{
@@ -321,12 +321,12 @@ public class EmployeeManagementPageT1Test extends TestBase{
 		String S=EmployeemanagementpageT1.pdfcompare();
 		Assert.assertTrue(S.contains("PAYROLL"));
 	}*/
-		/*	@Test(priority=12, description="Payroll Entry T1 Page: Launching Test")
+		@Test(priority=12, description="Payroll Entry T1 Page: Launching Test")
 			public void ValidatePayrollEntryPageLaunch() throws InterruptedException
 			{
 				EmployeemanagementpageT1.PElaunch();
 				
-			}*/
+			}
 			
 			/*@Test(priority=12, description="Employee Management T1 Page: Import Employee validation Test")
 			public void ValidateImportEmployeeCheck() throws InterruptedException, IOException

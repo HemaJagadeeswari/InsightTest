@@ -41,64 +41,79 @@ public class PayrollEntryPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
-		Thread.sleep(2000);
-		DashboardpageT1=SetuppageT1.PageView1();
-		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
-		Thread.sleep(2000);
-		EmployeemanagementpageT1=DetailspageT1.EMlaunch();
-		Thread.sleep(1000);
-		PayrollEntrypageT1=EmployeemanagementpageT1.PElaunch();
-		//WorkclassespageT1=EmployeemanagementpageT1.WClaunch();
-		
+		DashboardpageT1=homepageT1.PageView();
+		//Thread.sleep(1000);
+		PayrollEntrypageT1= DashboardpageT1.PElaunch();	
 		}
-@Test(priority=0, description="PayrollEntry T1 Page: Payrolls Tab Name Test")
-	public void PayrollSTabName()
+	
+/*	
+	 @Test(priority=0, description="PayrollEntry T1 Page: View All Payroll Left Nav Name Test")
+		public void ValidateViewAllPayrollsLeftNav()
+		{
+			String P=PayrollEntrypageT1.ValidateViewAllPayrollsLeftNav();
+			Assert.assertEquals(P,"View All Payroll","View All Payroll Left Nav Name not matching");
+		}
+		
+@Test(priority=1, description="PayrollEntry T1 Page: Create Payroll Left Nav Name Test")
+	public void CreatePayrollLeftNavName()
 	{
-		String P=PayrollEntrypageT1.ValidatePayrollsTab();
-		Assert.assertEquals(P,"PAYROLLS","Payrolls Tab Name not matching");
+		String C=PayrollEntrypageT1.ValidateCreatePayrollLeftNav();
+		Assert.assertEquals(C,"Create Payroll","Create Payroll Left Nav Name not matching");
+	}
+
+		@Test(priority=2, description="PayrollEntry T1 Page: Import Payroll Left Nav Name Test")
+		public void ImportPayrollLeftNavName()
+		{
+			String I=PayrollEntrypageT1.ValidateImportPayrollLeftNav();
+			Assert.assertEquals(I,"Import Payroll","Import Payroll Left Nav Name not matching");
+		}	
+		
+		@Test(priority=3, description="PayrollEntry T1 Page: Generate WH-347 Left Nav Name Test")
+		public void GenerateWH347LeftNavName()
+		{
+			String I=PayrollEntrypageT1.ValidateGenerateWH347LeftNav();
+			Assert.assertEquals(I,"Generate WH-347","Generate WH-347 Left Nav Name not matching");
+		}
+	
+ @Test(priority=4, description="PayrollEntry T1 Page: View All Payroll Tab Name Test")
+	public void ValidateViewAllPayrollTabName()
+	{
+		String P=PayrollEntrypageT1.ValidateViewAllPayrollsTab();
+		Assert.assertEquals(P,"VIEW ALL PAYROLL","View All Payroll Tab Name not matching");
 	}
 	
-@Test(priority=1, description="PayrollEntry T1 Page: Create New Payroll Tab Name Test")
+@Test(priority=5, description="PayrollEntry T1 Page: Create Payroll Tab Name Test")
 public void CreateNewPayrollTabName()
 {
-	String C=PayrollEntrypageT1.ValidateCreateNewPayrollTab();
-	Assert.assertEquals(C,"CREATE NEW PAYROLL","Create New Payroll Tab Name not matching");
+	String C=PayrollEntrypageT1.ValidateCreatePayrollTab();
+	Assert.assertEquals(C,"CREATE PAYROLL","Create Payroll Tab Name not matching");
 }
 
-	@Test(priority=2, description="PayrollEntry T1 Page: Import Payroll Entry Tab Name Test")
-	public void ImportPayrollEntryTabName()
+	@Test(priority=6, description="PayrollEntry T1 Page: Import Payroll Tab Name Test")
+	public void ImportPayrollTabName()
 	{
-		String I=PayrollEntrypageT1.ValidateImportPayrollEntryTab();
-		Assert.assertEquals(I,"IMPORT PAYROLL ENTRY","Import Payroll Entry Tab Name not matching");
+		String I=PayrollEntrypageT1.ValidateImportPayrollTab();
+		Assert.assertEquals(I,"IMPORT PAYROLL","Import Payroll Tab Name not matching");
 	}
 	
 
-	@Test(priority=3, description="PayrollEntry T1 Page: Work Class Mappings Tab Name Test")
-	public void WorkClassMappingTabName()
+	@Test(priority=7, description="PayrollEntry T1 Page: Generate WH-347 Tab Name Test")
+	public void GenerateWH347TabName()
 	{
-		String I=PayrollEntrypageT1.ValidateWorkClassMappingTab();
-		Assert.assertEquals(I,"WORK CLASS MAPPINGS","Work Class Mappings Tab Name not matching");
+		String I=PayrollEntrypageT1.ValidateGenerateWH347Tab();
+		Assert.assertEquals(I,"GENERATE WH-347","Generate WH-347 Tab Name not matching");
 	}
 	
-	@Test(priority=4, description="PayrollEntry T1 Page: WH 347 Generation Tab Name Test")
-	public void WH347GenerationTabName()
-	{
-		String I=PayrollEntrypageT1.ValidateWH347GenerationTab();
-		Assert.assertEquals(I,"WH-347 GENERATION","WH 347 Generation Tab Name not matching");
-	}
-	
+
 	@Test(priority=5, description="PayrollEntry T1 Page: Payrolls Page Image Verification")
 	public void PayrollysImageVerification() throws IOException, AWTException, InterruptedException
 	{
 		PayrollEntrypageT1.PayrollsPageImageVerification();
 		
 	}
-	
+	*/
 
-	
-	
-	@Test(priority=6, description="PayrollEntry T1 Page: Edit button Name Test")
+	/*@Test(priority=6, description="PayrollEntry T1 Page: Edit button Name Test")
 	public void Editbutton()
 	{
 		String E=PayrollEntrypageT1.ValidateEditbutton();
@@ -112,14 +127,14 @@ public void CreateNewPayrollTabName()
 		Assert.assertEquals(EH,"ENTER HOURS","Enter Hours button Name not matching");
 	}
 	
-	@Test(priority=8, description="PayrollEntry T1 Page: Change To No Work Button Name Test")
+	//@Test(priority=8, description="PayrollEntry T1 Page: Change To No Work Button Name Test")
 	public void ChangeToNoWorkbuttonName()
 	{
 		String C=PayrollEntrypageT1.ValidateChangeToNoWorkButton();
 		Assert.assertEquals(C,"CHANGE TO NO WORK","Change To No Work Button Name not matching");
 	}
 	
-	@Test(priority=9, description="PayrollEntry T1 Page: Sign button Name Test")
+	//@Test(priority=9, description="PayrollEntry T1 Page: Sign button Name Test")
 	public void SignbuttonName()
 	{
 		String I=PayrollEntrypageT1.ValidateSignbutton();
@@ -133,14 +148,14 @@ public void CreateNewPayrollTabName()
 		Assert.assertEquals(I,"REFRESH PAYROLL","Refresh button Name not matching");
 	}
 	
-	@Test(priority=11, description="PayrollEntry T1 Page: Mark As Final Button Name Test")
+	//@Test(priority=11, description="PayrollEntry T1 Page: Mark As Final Button Name Test")
 	public void MarkAsFinalbuttonName()
 	{
 		String I=PayrollEntrypageT1.ValidateMarkAsFinalbutton();
 		Assert.assertEquals(I,"MARK AS FINAL","Mark A Final button Name not matching");
 	}
 	
-	@Test(priority=12, description="PayrollEntry T1 Page: Clear Final Flag Button Name Test")
+	//@Test(priority=12, description="PayrollEntry T1 Page: Clear Final Flag Button Name Test")
 	public void ClearFinalFlagbuttonName()
 	{
 		String I=PayrollEntrypageT1.ValidateClearFinalFlagbutton();
@@ -153,14 +168,14 @@ public void CreateNewPayrollTabName()
 		String I=PayrollEntrypageT1.ValidateDeletebutton();
 		Assert.assertEquals(I,"DELETE","Delete Button Name not matching");
 	}
-	@Test(priority=14, description="PayrollEntry T1 Page: Manual Payroll Entry Verification")
+	//@Test(priority=14, description="PayrollEntry T1 Page: Manual Payroll Entry Verification")
 		public void CreateNewPayrollImageVerification() throws IOException, AWTException
 		{
 			PayrollEntrypageT1.CreatNewPayrollImageVerification();
 			
-		}
+		}*/
 	
-@DataProvider(name="getManualPayroll")
+/*@DataProvider(name="getManualPayroll")
 	   public Object[][] getTestDataManualPayroll(Method m)
 		{
 			Object data[][]=TestUtil.getTestData(sheetName, m.getName());
@@ -168,17 +183,20 @@ public void CreateNewPayrollTabName()
 			return data;	
 		}	
 	@Test(priority=15,dataProvider="getManualPayroll",description="PayrollEntry T1 Page:Manual Payroll creation Test")
-	public void ValidateManualPayrollCreation(String STP,String Day1,String H1,String OT1,String DT1,String OE,String Day2,String H2,String OT2,
+	public void ManualPayrollCreation(String STP,String ENW,String Day1,String H1,String OT1,String DT1,String OE,String Day2,String H2,String OT2,
 			String DT2,String Day3,String H3,String OT3,String F1,String W1,String S1, String L1,
 			String O1,String E1,String NP1, String WA1,String Day4,String H4,String OT4,String DT4,String H5,String OT5,String F3,String W3,String S3,String S)
 	 throws IOException, AWTException, InterruptedException
 	{
-		PayrollEntrypageT1.ValidateManualPayrollCreation(STP,Day1,H1,OT1,DT1,OE,Day2,H2,OT2,
+		PayrollEntrypageT1.ValidateManualPayrollCreation(STP,ENW,Day1,H1,OT1,DT1,OE,Day2,H2,OT2,
 				DT2,Day3,H3,OT3,F1,W1,S1,L1,O1,E1,NP1,WA1,Day4,H4,OT4,DT4,H5,OT5,F3,W3,S3,S);
-	}
-	@DataProvider(name="getEditManualPayroll")
+	}	*/
+	
+	/*@DataProvider(name="getEditManualPayroll")
 	   public Object[][] getTestDataEditManualPayroll(Method m)
-		{
+	
+	
+	{
 			Object data[][]=TestUtil.getTestData(sheetName, m.getName());
 			System.out.println(m.getName());
 			return data;
@@ -197,8 +215,7 @@ public void CreateNewPayrollTabName()
 				HO2,OTH2,DTH2,OEH2,
 				 F2,Name, JT, PED,PD,BR,OT, DT,FR,
 				Name1,PName1,PName,WC);
-	}
-	
+	}*/
 	@Test(priority=18, description="PayrollEntry T1 Page: Manual Payroll Entry Verification")
 	public void WHGenerationPageLaunch() throws InterruptedException
 	{

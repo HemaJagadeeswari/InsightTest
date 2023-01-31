@@ -46,10 +46,10 @@ public class WH347GenerationPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
+		//SetuppageT1=homepageT1.PageView();
 		Thread.sleep(2000);
 		DashboardpageT1=SetuppageT1.PageView1();
-		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
+		//DetailspageT1=DashboardpageT1.DetailsPageLaunch();
 		Thread.sleep(2000);
 		EmployeemanagementpageT1=DetailspageT1.EMlaunch();
 		Thread.sleep(1000);
@@ -79,14 +79,8 @@ public class WH347GenerationPageT1Test extends TestBase{
 	{
 		WH347GenerationpageT1.ValidatePreviewReportbutton();
 		
-	}
-	
-	@Test(priority=2, description="WH347Generation T1 Page: Preview Report button Verification")
-	public void Previe() throws IOException, AWTException, InterruptedException
-	{
-		WH347GenerationpageT1.ValidatePreviewReportbutton();
-		
 	}*/
+	
 	
 	@DataProvider(name="getWHGeneration")
 	   public Object[][] getTestDataWHGeneration(Method m)

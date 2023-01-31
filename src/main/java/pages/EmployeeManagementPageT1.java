@@ -55,6 +55,8 @@ public class EmployeeManagementPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Employees')])[5]")
 	WebElement EmployeesTab;
 	
+	@FindBy(xpath="(//*[contains(text(),'View All Payroll')])[1]")
+	WebElement ViewAllPayrollleftNav;
 	
 	@FindBy(xpath="(//*[contains(text(),'Employees')])[1]")
 	WebElement Employees;
@@ -406,6 +408,10 @@ public class EmployeeManagementPageT1 extends TestBase{
 	
 	@FindBy(xpath="//*[contains(text(),'Payroll Entry')]")
 	WebElement PayrollEntry;
+	
+	
+	@FindBy(xpath="//*[contains(text(),'Labor Tracking')]")
+	WebElement LaborTracking;
 	
 	public EmployeeManagementPageT1()
 	{
@@ -3448,10 +3454,11 @@ public void ValidateDownloadEmployeeLayout() throws InterruptedException
 
 public PayrollEntryPageT1 PElaunch() throws InterruptedException {
 	// TODO Auto-generated method stub
-	Thread.sleep(2000);
-	WebDriverWait wait = new WebDriverWait(Driver, 80);
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Payroll Entry')]")));
-	PayrollEntry.click();
+	//Thread.sleep(2000);
+	//Driver.findElement(By.xpath("//*[contains(text(),'due')]//following::button[1]")).click();
+	JavascriptExecutor ex = (JavascriptExecutor)Driver;
+	ex.executeScript("arguments[0].click();", LaborTracking);
+	ViewAllPayrollleftNav.click();
 	return new PayrollEntryPageT1();
 }
 

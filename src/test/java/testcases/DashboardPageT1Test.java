@@ -19,6 +19,7 @@ import pages.HomePage;
 import pages.HomePageT1;	
 import pages.LoginPage;
 import pages.LoginPageT1;
+import pages.PayrollEntryPageT1;
 import pages.SetupPageT1;
 import util.TestUtil;
 
@@ -29,6 +30,7 @@ public class DashboardPageT1Test extends TestBase{
 	DetailsPageT1 DetailspageT1;
 	SetupPageT1 SetuppageT1;
 	EmployeeManagementPageT1 EmployeemanagementppageT1;
+	PayrollEntryPageT1 PayrollEntrypageT1;
 	
 	public DashboardPageT1Test()
 	{
@@ -158,10 +160,16 @@ public class DashboardPageT1Test extends TestBase{
 	}
 	
 	//@Test(priority=14, description="Dashboard Page T1: Details Page Selection Test")
-	public void EmployeeManagementPagechange() throws InterruptedException
+	public void EmployeeManagementPageLaunch() throws InterruptedException
 	{
 		EmployeemanagementppageT1=DashboardpageT1.EMLaunch();
 }
+	
+	//@Test(priority=14, description="Dashboard Page T1: Details Page Selection Test")
+		public void PayrollEntryPagechange() throws InterruptedException
+		{
+			PayrollEntrypageT1=DashboardpageT1.PElaunch();
+	}
 
 	@AfterMethod
 	public void tearDown()

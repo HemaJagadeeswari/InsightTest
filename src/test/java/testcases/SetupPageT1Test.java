@@ -40,7 +40,7 @@ public class SetupPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
+		//SetuppageT1=homepageT1.PageView();
 		}
 	
 	@Test(priority=0,description="Setup Page: Image Verification")

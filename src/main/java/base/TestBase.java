@@ -43,7 +43,7 @@ prop.load(Config);
 		browsername=prop.getProperty("Browser");
 		if(browsername.equals("chrome"))
 		{
-			System.setProperty("webdriver.chrome.driver","F:\\SkillSmart\\SkillSmart Automation\\Workspace\\SW\\chromedriver_win32 (10)\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","F:\\SkillSmart\\SkillSmart Automation\\Workspace\\SW\\chromedriver_win32 (11)\\chromedriver.exe");
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
@@ -53,7 +53,7 @@ prop.load(Config);
 			options.setExperimentalOption("prefs", chromePrefs);
 
 			Driver=new ChromeDriver(options);
-			/*String Downloadpath=System.getProperty("user.dir");
+		/*	String Downloadpath=System.getProperty("user.dir");
 			System.out.println(Downloadpath);
 			ChromeOptions Option=new ChromeOptions();
 			HashMap<String,Object> prefs=new HashMap<String, Object>();

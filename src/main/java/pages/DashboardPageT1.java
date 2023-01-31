@@ -85,6 +85,13 @@ public class DashboardPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'View All Employees')])")
 	WebElement ViewAllEmployees;
 	
+	@FindBy(xpath="//*[contains(text(),'Labor Tracking')]")
+	WebElement LaborTracking;
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Payroll')])[1]")
+	WebElement ViewAllPayrollleftNav;
+	
+	
 	public DashboardPageT1()
 	{
 		
@@ -278,5 +285,16 @@ public class DashboardPageT1 extends TestBase{
 		ViewAllEmployees.click();
 		return new EmployeeManagementPageT1();
 		 
+	}
+	public PayrollEntryPageT1 PElaunch() throws InterruptedException {
+		// TODO Auto-generated method stub
+		Thread.sleep(3000);
+		//Driver.findElement(By.xpath("//*[contains(text(),'due')]//following::button[1]")).click();
+		JavascriptExecutor ex = (JavascriptExecutor)Driver;
+		ex.executeScript("arguments[0].click();", LaborTracking);
+		JavascriptExecutor ex1 = (JavascriptExecutor)Driver;
+		ex1.executeScript("arguments[0].click();", ViewAllPayrollleftNav);
+		//ViewAllPayrollleftNav.click();
+		return new PayrollEntryPageT1();
 	}
 }

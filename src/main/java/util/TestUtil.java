@@ -17,10 +17,10 @@ import base.TestBase;
 public class TestUtil extends TestBase{
 	public static long Page_Load_Time=50;
 	public static long Implicit_Time=30;
-	public static String TESTDATA_SHEET_PATH_INPUTFILE = "F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\Automation Input File.xlsx";
+	public static String TESTDATA_SHEET_PATH_INPUTFILE = "F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\Automation Input File1.xlsx";
 	public static String TESTDATA_SHEET_PATH_BASELINE = "F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\Baseline File.xlsx";
 	public static String TESTDATA_SHEET_PATH_IMPORTFILE="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\src\\main\\java\\testdata\\skillsmart-employee-template.xlsx";
-	//public static String FileDownloadpath="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Download";
+	public static String FileDownloadpath="F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Download";
 	//public static String TESTDATA_SHEET_PATH_BASELINE = "F:\\BaselineNew.xlsx";
 
 	static Workbook book;
@@ -94,7 +94,7 @@ public class TestUtil extends TestBase{
 					  strSheetName="T1WorkClasses";
 					break;
 					
-				  case "ValidateManualPayrollCreation":
+				  case "ManualPayrollCreation":
 					  strSheetName="T1ManualPayroll";
 					break;
 					
@@ -105,6 +105,10 @@ public class TestUtil extends TestBase{
 				  case "AddedEmployeeTest":
 					  strSheetName="ExistingEmployee";
 					break;
+					
+				  case "WHGenerationCreation":
+					  strSheetName="T1WH347Generation";
+					break;		
 				 
 				}
 				

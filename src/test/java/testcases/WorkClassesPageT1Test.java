@@ -40,12 +40,12 @@ public class WorkClassesPageT1Test extends TestBase{
 		initialization();
 		LoginpageT1=new LoginPageT1();
 		homepageT1=LoginpageT1.LoginT1(prop.getProperty("UserNameT1"),prop.getProperty("PasswordT1"));
-		SetuppageT1=homepageT1.PageView();
+		//SetuppageT1=homepageT1.PageView();
 		Thread.sleep(2000);
 		DashboardpageT1=SetuppageT1.PageView1();
-		DetailspageT1=DashboardpageT1.DetailsPageLaunch();
+		//DetailspageT1=DashboardpageT1.DetailsPageLaunch();
 		EmployeemanagementpageT1=DetailspageT1.EMlaunch();
-		WorkclassespageT1=EmployeemanagementpageT1.WClaunch();
+		//WorkclassespageT1=EmployeemanagementpageT1.WClaunch();
 		
 		}
 /*	@Test(priority=0, description="Work Classes T1 Page: Select Work Classes Tab Name Test")

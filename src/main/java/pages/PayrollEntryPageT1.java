@@ -29,19 +29,48 @@ import util.TestUtil;
 
 public class PayrollEntryPageT1 extends TestBase{
 
+	@FindBy(xpath="//*[contains(text(),'Reporting')]//following::div[1]")
+	WebElement LaborTracking;
+	
+	@FindBy(xpath="(//*[contains(text(),'Employees')])[1]")
+	WebElement Employees;
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Employees')])")
+	WebElement ViewAllEmployees;
+	
+	@FindBy(name="workClassId")
+	WebElement WorkclassID;
 	
 	
-	@FindBy(xpath="//*[contains(text(),'Payrolls')]")
-	WebElement Payrolls;
+	@FindBy(xpath="(//*[contains(text(),'View All Payroll')])[1]")
+	WebElement ViewAllPayrollleftNav;
 	
-	@FindBy(xpath="//*[contains(text(),'Create New Payroll')]")
-	WebElement CreateNewPayroll;
+	@FindBy(xpath="(//*[contains(text(),'Create Payroll')])[1]")
+	WebElement CreatePayrollLeftNav;
 	
-	@FindBy(xpath="//*[contains(text(),'Import Payroll Entry')]")
-	WebElement ImportPayrollEntry;
+	@FindBy(xpath="(//*[contains(text(),'Import Payroll')])[1]")
+	WebElement ImportPayrollLeftNav;
 	
-	@FindBy(xpath="//*[contains(text(),'Export Payroll Data')]")
-	WebElement ExportPayrollEntry;
+	@FindBy(xpath="(//*[contains(text(),'Generate WH-347')])[1]")
+	WebElement GenerateWH347LeftNav;
+	
+	@FindBy(xpath="(//*[contains(text(),'View All Payroll')])[2]")
+	WebElement ViewAllPayrollTab;
+	
+	@FindBy(xpath="(//*[contains(text(),'Payrolls')])[2]")
+	WebElement PayrollsTab;
+	
+	@FindBy(xpath="(//*[contains(text(),'Create Payroll')])[2]")
+	WebElement CreatePayrollTab;
+	
+	@FindBy(xpath="//*[contains(text(),'Manual')]")
+	WebElement ManualPayrollTab;
+	
+	@FindBy(xpath="(//*[contains(text(),'Import Payroll')])[2]")
+	WebElement ImportPayrollTab;
+	
+	@FindBy(xpath="(//*[contains(text(),'Generate WH-347')])[2]")
+	WebElement GenerateWH347Tab;
 	
 	@FindBy(xpath="//*[contains(text(),'Work Class Mappings')]")
 	WebElement WorkClassMapping;
@@ -55,7 +84,7 @@ public class PayrollEntryPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Cancel')])")
 	WebElement Cancel;
 	
-	@FindBy(xpath="(//*[contains(text(),'Cancel')]//following::button[1])[1]")
+	@FindBy(xpath="//*[contains(text(),'Set')]//following::button[1]")
 	WebElement Create;
 	
 	@FindBy(xpath="(//*[contains(text(),'Delete')])")
@@ -98,7 +127,7 @@ public class PayrollEntryPageT1 extends TestBase{
 	@FindBy(xpath="(//*[contains(text(),'Save')])[2]")
 	WebElement Save;
 	
-	@FindBy(xpath="(//*[contains(text(),'Edit')])[2]")
+	@FindBy(xpath="(//*[contains(text(),'Edit')])")
 	WebElement Edit;
 	
 	@FindBy(xpath="//*[contains(text(),'Enter Hours')]")
@@ -187,8 +216,8 @@ public class PayrollEntryPageT1 extends TestBase{
 	@FindBy(xpath="//input[@id='fringe']//following::button[1]")
 	WebElement Confirm;
 	
-	@FindBy(xpath="(//*[contains(text(),'Save')])[2]")
-	WebElement SaveandClose;
+	@FindBy(xpath="(//*[contains(text(),'Save')])")
+	WebElement SaveEmployee;
 	
 	@FindBy(xpath="//*[contains(text(),'Re-sign')]")
 	WebElement Resign;
@@ -200,35 +229,69 @@ public class PayrollEntryPageT1 extends TestBase{
 	WebElement Export;
 	
 	
+	@FindBy(xpath="//*[contains(text(),'Employee Name')]//following::div[2]")
+	WebElement EmployeeName;
 	
 	public PayrollEntryPageT1()
 	{
 		PageFactory.initElements(Driver,this);
 	}
 	
-	public String ValidatePayrollsTab()
+	public String ValidateLaborTrackingLeftNav()
 	{
-		return Payrolls.getText();
+		//LaborTracking.click();
+		return LaborTracking.getText();
+	}
+	
+	public String ValidateViewAllPayrollsLeftNav()
+	{
+		
+		return ViewAllPayrollleftNav.getText();
 	}
 
-	public String ValidateCreateNewPayrollTab()
+	public String ValidateCreatePayrollLeftNav()
 	{
-		return CreateNewPayroll.getText();
+		
+		return CreatePayrollLeftNav.getText();
 	}
 	
-	public String ValidateImportPayrollEntryTab()
+	public String ValidateImportPayrollLeftNav()
 	{
-		return ImportPayrollEntry.getText();
+		
+		return ImportPayrollLeftNav.getText();
 	}
 	
-	public String ValidateWorkClassMappingTab()
+	
+	public String ValidateGenerateWH347LeftNav()
 	{
-		return WorkClassMapping.getText();
+		
+		return GenerateWH347LeftNav.getText();
 	}
 	
-	public String ValidateWH347GenerationTab()
+	
+	public String ValidateViewAllPayrollsTab()
 	{
-		return WH347Generation.getText();
+		
+		return ViewAllPayrollTab.getText();
+	}
+
+	public String ValidateCreatePayrollTab()
+	{
+		
+		return CreatePayrollTab.getText();
+	}
+	
+	public String ValidateImportPayrollTab()
+	{
+		
+		return ImportPayrollTab.getText();
+	}
+	
+	
+	public String ValidateGenerateWH347Tab()
+	{
+		
+		return GenerateWH347Tab.getText();
 	}
 	
 	public void PayrollsPageImageVerification() throws IOException, AWTException, InterruptedException
@@ -296,7 +359,8 @@ public class PayrollEntryPageT1 extends TestBase{
 	
 	public void CreatNewPayrollImageVerification() throws IOException, AWTException
 	{
-	CreateNewPayroll.click();
+		LaborTracking.click();
+	CreatePayrollLeftNav.click();
 		BufferedImage expectedImage = ImageIO.read(new File("F:\\SkillSmart\\SkillSmart Automation\\Workspace\\InsightTest\\Baseline\\CreateNewPayrollPageT1.png"));
 		Screenshot ImageScreenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(Driver);
 
@@ -316,30 +380,36 @@ public class PayrollEntryPageT1 extends TestBase{
 			}
 	}
 	
-	public void ValidateManualPayrollCreation(String STP,String Day1,String H1,String OT1,String DT1,String OE,String Day2,String H2,String OT2,
+	public void ValidateManualPayrollCreation(String STP,String ENW,String Day1,String H1,String OT1,String DT1,String OE,String Day2,String H2,String OT2,
 			String DT2,String Day3,String H3,String OT3,String F1,String W1,String S1, String L1,String O1,String E1,String NP1, String WA1,String Day4,
 			String H4,String OT4,String DT4,String H5,String OT5,String F3,String W3,String S3,String S) throws InterruptedException
 	{
-		CreateNewPayroll.click();
+		
+		//LaborTracking.click();
+		//CreatePayrollTab.click();
+		ManualPayrollTab.click();
 		SelectPayrollPeriod.click();
 		if(Driver.getPageSource().contains(STP))
 		{
 	System.out.println("Payroll period is Enabled");
-			 List<WebElement> SP=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[2]//li"));
+			 List<WebElement> SP=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[4]//li"));
 		 System.out.println(SP.size());
 			for(int k=0;k<SP.size();k++)
 			{
-				Thread.sleep(1000);
 		 if(SP.get(k).getText().contains(STP))
 		 {
+			System.out.println(SP.get(k).getText());
 			 SP.get(k).click();
 			 break;
 		 }
 			}
 			
 			Thread.sleep(1000);
-			Cancel.click();
-			if(Payrolls.isDisplayed())
+			
+			//ViewAllPayrollTab.click();
+			JavascriptExecutor exs = (JavascriptExecutor)Driver;
+			exs.executeScript("arguments[0].click();",PayrollsTab );
+			if(PayrollsTab.isDisplayed())
 			{
 				System.out.println("Payrolls page is loaded");
 		    }
@@ -347,11 +417,11 @@ public class PayrollEntryPageT1 extends TestBase{
 		    {
 		    	System.out.println("Payrolls page is not loaded");
 		    }
-				
-			CreateNewPayroll.click();
+			ManualPayrollTab.click();	
+			//CreatePayrollTab.click();
 			SelectPayrollPeriod.click();
 			
-			 List<WebElement> SP1=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[2]//li"));
+			 List<WebElement> SP1=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[4]//li"));
 			 System.out.println(SP1.size());
 			 
 			 
@@ -367,7 +437,9 @@ public class PayrollEntryPageT1 extends TestBase{
 				Actions action1 = new Actions(Driver);
 			    action1.sendKeys(Keys.ESCAPE).build().perform();
 			    Driver.findElement(By.xpath("//*[contains(text(),'Set the record')]//preceding::input[1]")).click();
-				Create.click();
+			    JavascriptExecutor exs2 = (JavascriptExecutor)Driver;
+				exs2.executeScript("arguments[0].click();",Create );
+				
 				String R=Driver.findElement(By.xpath("//*[contains(text(),'Payroll record')]")).getText();
 				String RE="Payroll record is created";
 			    if(R.contains(RE))
@@ -404,14 +476,18 @@ public class PayrollEntryPageT1 extends TestBase{
 				No.click();
 				Delete.click();
 				Yes.click();
-				CreateNewPayroll.click();
+				Thread.sleep(1000);
+				JavascriptExecutor exs1 = (JavascriptExecutor)Driver;
+				exs1.executeScript("arguments[0].click();",ManualPayrollTab );
+				//CreatePayrollTab.click();
 				SelectPayrollPeriod.click();
-				 List<WebElement> SP2=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[2]//li"));
+				 List<WebElement> SP2=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedDateRange']//following::ul[4]//li"));
 				 System.out.println(SP2.size());
 				 
 				 
 					for(int k=0;k<SP2.size();k++)
 					{
+						Thread.sleep(1000);
 				 if(SP2.get(k).getText().contains(STP))
 				 {
 					 System.out.println(SP2.get(k).getText());
@@ -421,8 +497,24 @@ public class PayrollEntryPageT1 extends TestBase{
 					}
 					Actions acti = new Actions(Driver);
 				    acti.sendKeys(Keys.ESCAPE).build().perform();
+				    Thread.sleep(1000);
 				Create.click();
-			
+				
+			EmployeeName.click();
+			List<WebElement> EN=Driver.findElements(By.xpath("//div[@id='mui-component-select-editorIndex']//following::ul//li"));
+			 System.out.println(EN.size());
+			 
+			 
+				for(int k=0;k<EN.size();k++)
+				{
+			 if(EN.get(k).getText().contains(ENW))
+			 {
+				 System.out.println(EN.get(k).getText());
+				 EN.get(k).click();
+				 break;
+			 }
+				}
+				Thread.sleep(1000);
 					Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[1]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 					Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[1]")).sendKeys("25");
 					Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[2]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
@@ -474,6 +566,7 @@ public class PayrollEntryPageT1 extends TestBase{
 				    {
 				    	System.out.println("Exemptions Negative Value: Error message is not matching");
 				    } 
+				   
 				    Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[1]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 					Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[1]")).sendKeys(H1);
 					Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::div[2]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
@@ -599,7 +692,8 @@ public class PayrollEntryPageT1 extends TestBase{
 				    {
 				    	System.out.println("WH-347 Generation page not loaded");
 				    }
-				  Payrolls.click();
+				  //ViewAllPayrollTab.click();
+				    PayrollsTab.click();
 }
 		else
 		{
@@ -615,15 +709,12 @@ public class PayrollEntryPageT1 extends TestBase{
 	{
 		
 		  
-
-		PayrollReportPeriod.click();	
-		List<WebElement> PRP=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedPayrollId']//following::ul[2]//li"));
+Thread.sleep(1000);
+		PayrollReportPeriod.click();
+		Thread.sleep(1000);
+		List<WebElement> PRP=Driver.findElements(By.xpath("//div[@id='mui-component-select-selectedPayrollId']//following::ul[4]//li"));
 		 System.out.println(PRP.size());
-			
-		 for(int l=0;l<=PRP.size()-1;l++)
-			{
-				System.out.println(PRP.get(l).getText());
-			}
+
 			for(int k=0;k<PRP.size();k++)
 			{
 		 if(PRP.get(k).getText().contains(PP))
@@ -648,20 +739,57 @@ public class PayrollEntryPageT1 extends TestBase{
 		    Driver.findElement(By.xpath("//*[contains(text(),'You are about to edit')]//following::button[1]")).click();
 		    Edit.click();
 			Driver.findElement(By.xpath("//*[contains(text(),'You are about to edit')]//following::button[2]")).click();
-		    ChangeToNoWork.click(); 
-		    String MI=Driver.findElement(By.xpath("//*[contains(text(),'You are changing')]")).getText();
-			String M="You are changing an already saved payroll, all edits will be tracked";
-			if(M.equals(MI))
-			{
-				System.out.println("Already saved payroll message matches");
-			}
-			else
-			{
-				System.out.println("Already saved payroll message not matches");
-			}
+			ChangeToNoWork.click();
+			 String MI=Driver.findElement(By.xpath("//*[contains(text(),'You are changing')]")).getText();
+				String M="You are changing an already saved payroll, all edits will be tracked";
+				if(M.equals(MI))
+				{
+					System.out.println("Already saved payroll message matches");
+				}
+				else
+				{
+					System.out.println("Already saved payroll message not matches");
+				}
 			Driver.findElement(By.xpath("//*[contains(text(),'You are changing')]//following::button[1]")).click();
-			 ChangeToNoWork.click(); 
-			 Driver.findElement(By.xpath("//*[contains(text(),'You are changing')]//following::button[2]")).click();
+			 Actions A=new Actions(Driver);
+			    WebElement NEM=Driver.findElement(By.xpath("//*[contains(text(),'"+FN1+"')]//preceding::div[1]"));
+			    ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", NEM);
+			    A.moveToElement(NEM).build();
+			    A.click(NEM).perform();
+			 /*   OJT.click();
+			    Actions action3 = new Actions(Driver);
+			    action3.sendKeys(Keys.ESCAPE).build().perform();*/
+			   Thread.sleep(2000);
+			    ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", Fica);
+			 //   Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).clear();
+			   
+			    Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).click();
+			    Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).sendKeys(H1);
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[2]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[2]")).sendKeys(OT1);
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[3]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[3]")).sendKeys(DT1);
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[4]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[4]")).sendKeys(OE);
+			Fica.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Fica.sendKeys(F1);
+				Withholding.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Withholding.sendKeys(W1);
+				State.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				State.sendKeys(S1);
+				Local.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Local.sendKeys(L1);
+				Other.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Other.sendKeys(O1);
+				Exemptions.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Exemptions.sendKeys(E1);
+				NonProjectHours.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				NonProjectHours.sendKeys(NP1);
+				Wages.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+				Wages.sendKeys(WA1);
+				SaveEdit.click();	 
+				Thread.sleep(1000);
 			 String Re=Driver.findElement(By.xpath("//*[contains(text(),'This payroll was previous')]")).getText();
 			 String RS="This payroll was previously signed, all edits are tracked and payroll needs to be resigned";
 			 if(Re.equals(RS.toUpperCase()))
@@ -672,62 +800,7 @@ public class PayrollEntryPageT1 extends TestBase{
 			 {
 				 System.out.println("Resign message not matches");
 			 }
-			 
-			 String NW=Driver.findElement(By.xpath("//*[contains(text(),'This payroll was set')]")).getText();
-			 String N="This payroll was set to no work performed. There is nothing to display.";
-			 if(NW.equals(N))
-			 {
-				 System.out.println("No Work Performed message matches");
-			 }
-			 else 
-			 {
-				 System.out.println("No Work Performed message not matches");
-			 }
-		 Edit.click();
-		    CancelEdit.click();
-		    Edit.click();
-		   Driver.findElement(By.xpath("//*[contains(text(),'Change to Work Performed')]")).click();
-		   Thread.sleep(1000);
-		   Edit.click();
-		    Actions A=new Actions(Driver);
-		    WebElement NEM=Driver.findElement(By.xpath("//*[contains(text(),'"+FN1+"')]//preceding::div[1]"));
-		    A.moveToElement(NEM).build();
-		    A.click(NEM).perform();
-		 /*   OJT.click();
-		    Actions action3 = new Actions(Driver);
-		    action3.sendKeys(Keys.ESCAPE).build().perform();*/
-		   
-	
-		    ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", Fica);
-		 //   Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).clear();
-		   
-		    Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).click();
-		    Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[1]")).sendKeys(H1);
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[2]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[2]")).sendKeys(OT1);
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[3]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[3]")).sendKeys(DT1);
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[4]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Driver.findElement(By.xpath("//*[contains(text(),'"+Day1+"')]//following::input[4]")).sendKeys(OE);
-		Fica.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Fica.sendKeys(F1);
-			Withholding.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Withholding.sendKeys(W1);
-			State.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			State.sendKeys(S1);
-			Local.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Local.sendKeys(L1);
-			Other.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Other.sendKeys(O1);
-			Exemptions.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Exemptions.sendKeys(E1);
-			NonProjectHours.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			NonProjectHours.sendKeys(NP1);
-			Wages.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
-			Wages.sendKeys(WA1);
-			SaveEdit.click();
-			Edit.click();
+		   		Edit.click();
 			EnterHours.click();
 				 Driver.findElement(By.xpath("//*[contains(text(),'"+Day2+"')]//following::div[1]")).click();
 				  Driver.findElement(By.xpath("//*[contains(text(),'"+Day2+"')]//following::div[1]")).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
@@ -743,12 +816,14 @@ public class PayrollEntryPageT1 extends TestBase{
 				Thread.sleep(1000);
 				JavascriptExecutor exs = (JavascriptExecutor)Driver;
 				exs.executeScript("arguments[0].click();",Save );
-				Resign.click();
-				JavascriptExecutor EMP = (JavascriptExecutor)Driver;
-				EMP.executeScript("arguments[0].click();",EmployeeManagement);
-				//EmployeeManagement.click();
+				Thread.sleep(2000);
+				JavascriptExecutor exe1 = (JavascriptExecutor)Driver;
+				exe1.executeScript("arguments[0].click();", Employees);
+				//Employees.click();
+				ViewAllEmployees.click();
+Thread.sleep(1000);
 				Driver.findElement(By.xpath("//*[text()[contains(.,'"+Name1+"')]]//following::input[1]")).click();
-				 String OP=Driver.findElement(By.xpath("//*[contains(text(),'This employee has hours')]")).getText();
+			/*	 String OP=Driver.findElement(By.xpath("//*[contains(text(),'This employee has hours')]")).getText();
 				 String PR="This employee has hours on 1 or more unsigned payrolls. Removing their assignment will remove them from those payrolls.";
 				 if(OP.equals(PR))
 				 {
@@ -760,7 +835,8 @@ public class PayrollEntryPageT1 extends TestBase{
 				 }
 	    No.click();
 	    Driver.findElement(By.xpath("//*[text()[contains(.,'"+Name1+"')]]//following::input[1]")).click();
-	    Yes.click();
+	    Yes.click();*/
+				Thread.sleep(1000);
 				WebElement Search=Driver.findElement(By.xpath("(//*[contains(text(),'Name')])[2]//following::input[1]"));
 				Search.sendKeys(Name);
 				Thread.sleep(2000);
@@ -770,15 +846,17 @@ public class PayrollEntryPageT1 extends TestBase{
 				Em1.click(Emp1).perform();
 				JavascriptExecutor ex = (JavascriptExecutor)Driver;
 				ex.executeScript("arguments[0].click();", PayRate);
+				
+				((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", AddEntry);
 					JavascriptExecutor xa = (JavascriptExecutor)Driver;
 					xa.executeScript("arguments[0].click();", AddEntry);
-					//AddEntry.click();
-					Thread.sleep(3000);
-					JavascriptExecutor x = (JavascriptExecutor)Driver;
-					x.executeScript("arguments[0].click();", SelectType);
 					Thread.sleep(2000);
-					SelectType.click();
-					 List<WebElement> J=Driver.findElements(By.xpath("//div[@id='mui-component-select-workClassId']//following::ul[2]//li"));
+					Driver.findElement(By.xpath("//*[contains(text(),'Select type')]//following::div[2]")).click();
+					/*JavascriptExecutor x = (JavascriptExecutor)Driver;
+					x.executeScript("arguments[0].click();", WorkclassID);*/
+					Thread.sleep(2000);
+					//SelectType.click();
+					 List<WebElement> J=Driver.findElements(By.xpath("//div[@id='mui-component-select-workClassId']//following::ul[4]//li"));
 					 System.out.println(J.size());
 						for(int l=0;l<=J.size()-1;l++)
 						{
@@ -792,6 +870,8 @@ public class PayrollEntryPageT1 extends TestBase{
 						 break;
 					 }
 						}
+						Actions action3 = new Actions(Driver);
+					    action3.sendKeys(Keys.ESCAPE).build().perform();
 						PayEffectiveDate.click();
 						PayEffectiveDate.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
 						PayEffectiveDate.sendKeys(PED);
@@ -813,11 +893,13 @@ public class PayrollEntryPageT1 extends TestBase{
 						JavascriptExecutor c = (JavascriptExecutor)Driver;
 						c.executeScript("arguments[0].click();", Confirm);
 						JavascriptExecutor sc = (JavascriptExecutor)Driver;
-						sc.executeScript("arguments[0].click();", SaveandClose);
+						sc.executeScript("arguments[0].click();", SaveEmployee);
 						
-			    Thread.sleep(1000);
-			    JavascriptExecutor PE = (JavascriptExecutor)Driver;
-				PE.executeScript("arguments[0].click();", PayrollEntry);
+			    Thread.sleep(2000);
+			    ((JavascriptExecutor)Driver).executeScript("arguments[0].scrollIntoView(true);", LaborTracking);
+				JavascriptExecutor ex2 = (JavascriptExecutor)Driver;
+				ex2.executeScript("arguments[0].click();", ViewAllPayrollleftNav);
+				
 				PayrollReportPeriod.click();	
 				Driver.findElement(By.xpath("//*[contains(text(),'"+PP+"')]")).click();
 				
@@ -829,7 +911,7 @@ public class PayrollEntryPageT1 extends TestBase{
 			    {
 			    	System.out.println("Turned off Employee is not seen as expected");
 			    }
-				   Edit.click();
+				  /* Edit.click();
 				    RefreshPayroll.click(); 
 				    List<WebElement> WN=Driver.findElements(By.xpath("//*[contains(text(),'"+PName1+"')]//following::p[1]"));
 					 System.out.println(WN.size());
@@ -851,7 +933,7 @@ public class PayrollEntryPageT1 extends TestBase{
 						 System.out.println("New Added Workclass is not seen for an employee:" +WN.get(k).getText());
 					 }
 						}
-						    			
+						    	*/		
 	 Sign.click();
 	    SignYes.click();
 	    //To do Image Comparison for button disable.
@@ -862,15 +944,15 @@ public class PayrollEntryPageT1 extends TestBase{
 		  Driver.findElement(By.xpath("//*[contains(text(),'Foundations')]")).click();
 		  Export.click();
 		  Thread.sleep(3000);
-	  WH347Generation.click();
+		  GenerateWH347.click();
 	}
 
 	public WH347GenerationPageT1 WHGenerationlaunch() throws InterruptedException {
 		// TODO Auto-generated method stub
 		Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(Driver, 80);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'WH-347 Generation')]")));
-		WH347Generation.click();
+		JavascriptExecutor ex = (JavascriptExecutor)Driver;
+		ex.executeScript("arguments[0].click();", LaborTracking);
+		GenerateWH347LeftNav.click();
 		return new WH347GenerationPageT1();
 	}
 }
